@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
@@ -129,11 +131,12 @@ export default function TestimonialSection() {
 
                     {/* Author */}
                     <div className="flex items-center gap-4">
-                      <div className="h-12 w-12 rounded-full overflow-hidden flex-shrink-0 border-2 border-white/20">
-                        <img
+                      <div className="relative h-12 w-12 rounded-full overflow-hidden flex-shrink-0 border-2 border-white/20">
+                        <Image
                           src={testimonial.image}
                           alt={testimonial.author}
-                          className="h-full w-full object-cover"
+                          fill
+                          className="object-cover"
                         />
                       </div>
                       <div>

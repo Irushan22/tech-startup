@@ -25,6 +25,9 @@
   --border-subtle: rgba(90, 154, 74, 0.12);
   --border-accent: rgba(90, 154, 74, 0.3);
 
+  --brand-navy: #1a3a5c;
+  --brand-blue: #2a5a8c;
+
   --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.04);
   --shadow-card-strong: 0 8px 40px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.06);
 
@@ -36,6 +39,9 @@
 }
 
 @theme inline {
+  --color-brand-navy: var(--brand-navy);
+  --color-brand-blue: var(--brand-blue);
+  
   --color-background: var(--bg-primary);
   --color-foreground: var(--text-primary);
   --font-sans: var(--font-inter);

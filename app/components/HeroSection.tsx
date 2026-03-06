@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 export default function HeroSection() {
   return (
     <section
@@ -96,11 +98,13 @@ export default function HeroSection() {
             clipPath: "polygon(140px 0, 100% 0, 100% 100%, 0 100%)",
           }}
         >
-          {/* Main image */}
-          <img
+          {/* Main image optimized with next/image */}
+          <Image
             src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1600&q=80"
             alt="Marketing team collaborating on strategy"
-            className="h-full w-full object-cover"
+            fill
+            className="object-cover"
+            priority /* load hero images immediately */
           />
           
           <div

@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 
+import Image from "next/image";
+
 export default function PortfolioSection() {
   const [activeFilter, setActiveFilter] = useState("All");
 
@@ -109,10 +111,11 @@ export default function PortfolioSection() {
               className="group relative overflow-hidden cursor-pointer transition-all duration-500"
             >
               {/* Image */}
-              <img
+              <Image
                 src={project.image}
                 alt={project.title}
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                fill
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
               />
 
               {/* Static dark gradient */}

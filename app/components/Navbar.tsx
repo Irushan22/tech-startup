@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 
 // Navigation data with dropdowns for a marketing agency
 const navItems = [
@@ -107,15 +108,14 @@ export default function Navbar() {
       >
         {/* Top bar — absolutely positioned, extends to right edge of viewport */}
         <div
-          className={`absolute top-0 right-0 transition-all duration-500 ease-in-out ${scrolled ? "-translate-y-full opacity-0 pointer-events-none" : "translate-y-0 opacity-100"}`}
+          className={`hidden md:block bg-brand-navy absolute top-0 right-0 transition-all duration-500 ease-in-out ${scrolled ? "-translate-y-full opacity-0 pointer-events-none" : "translate-y-0 opacity-100"}`}
           style={{
-            background: "#1a3a5c",
             height: "36px",
             width: "78%",
             clipPath: "polygon(30px 0, 100% 0, 100% 100%, 18px 100%)",
           }}
         >
-          <div className="flex h-full items-center justify-end gap-6 px-6" style={{ paddingLeft: "48px", paddingRight: "100px" }}>
+          <div className="hidden md:flex h-full items-center justify-end gap-6 px-6" style={{ paddingLeft: "48px", paddingRight: "100px" }}>
             <a
               href="mailto:contact@gmail.com"
               className="flex items-center gap-2 text-xs font-medium transition-colors duration-200 hover:opacity-80"
@@ -157,7 +157,7 @@ export default function Navbar() {
 
         {/* Bottom bar wrapper */}
         <div
-          className="absolute right-0 transition-all duration-500 ease-in-out"
+          className="absolute right-0 transition-all duration-500 ease-in-out hidden md:block"
           style={{
             top: scrolled ? "0px" : "36px",
             width: "78%",
@@ -173,7 +173,7 @@ export default function Navbar() {
               clipPath: "polygon(18px 0, 100% 0, 100% 100%, 0 100%)",
             }}
           />
-          <div className="relative z-10 flex h-full items-center justify-end gap-8 px-6" style={{ paddingLeft: "48px", paddingRight: "100px" }}>
+          <div className="relative z-10 hidden md:flex h-full items-center justify-end gap-8 px-6" style={{ paddingLeft: "48px", paddingRight: "100px" }}>
             {navItems.map((item) => (
               <div
                 key={item.label}
@@ -183,21 +183,35 @@ export default function Navbar() {
               >
                 <a
                   href={item.href}
+                  onFocus={() => handleNavItemEnter(item.label, !!item.children)}
+                  onBlur={(e) => {
+                    // Only close if we are tabbing away entirely from this item's dropdown
+                    if (!e.relatedTarget || !(e.currentTarget.parentElement as HTMLElement).contains(e.relatedTarget as Node)) {
+                       handleMouseLeave();
+                    }
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      if (item.children) {
+                        e.preventDefault();
+                        setOpenDropdown(openDropdown === item.label ? null : item.label);
+                      }
+                    } else if (e.key === 'Escape') {
+                       setOpenDropdown(null);
+                    }
+                  }}
+                  aria-haspopup={!!item.children}
+                  aria-expanded={openDropdown === item.label}
+                  aria-current={
+                    (item.href === "#" && activeSection === "") || item.href === `#${activeSection}`
+                      ? "page"
+                      : undefined
+                  }
                   className={`group relative flex items-center gap-1 text-[13px] font-semibold uppercase tracking-widest transition-colors duration-300 ${
                     (item.href === "#" && activeSection === "") || item.href === `#${activeSection}`
-                      ? "text-[#1a3a5c]"
+                      ? "text-brand-navy"
                       : "text-[#3a4a5c]"
-                  }`}
-                  onMouseEnter={(e) => {
-                    if ((item.href !== "#" || activeSection !== "") && item.href !== `#${activeSection}`) {
-                      e.currentTarget.style.color = "#1a3a5c";
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    if ((item.href !== "#" || activeSection !== "") && item.href !== `#${activeSection}`) {
-                      e.currentTarget.style.color = "#3a4a5c";
-                    }
-                  }}
+                  } hover:text-brand-navy`}
                 >
                   {item.label}
                   {item.children && (
@@ -207,6 +221,7 @@ export default function Navbar() {
                       viewBox="0 0 24 24"
                       stroke="currentColor"
                       strokeWidth={2.5}
+                      aria-hidden="true"
                     >
                       <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                     </svg>
@@ -228,6 +243,7 @@ export default function Navbar() {
                     style={{ minWidth: "220px", zIndex: 50 }}
                     onMouseEnter={() => handleMouseEnter(item.label)}
                     onMouseLeave={handleMouseLeave}
+                    role="menu"
                   >
                     <div
                       className="rounded-sm py-2"
@@ -241,7 +257,22 @@ export default function Navbar() {
                         <a
                           key={child.label}
                           href={child.href}
-                          className="flex items-center px-5 py-2.5 text-sm font-medium transition-all duration-200"
+                          role="menuitem"
+                          onClick={() => setOpenDropdown(null)}
+                          onFocus={() => handleMouseEnter(item.label)}
+                          onBlur={(e) => {
+                            if (!e.relatedTarget || !(e.currentTarget.closest('[role="menu"]') as HTMLElement).contains(e.relatedTarget as Node)) {
+                              setOpenDropdown(null);
+                            }
+                          }}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Escape') {
+                              setOpenDropdown(null);
+                              // Refocus parent
+                              (e.currentTarget.closest('.relative')?.querySelector('a') as HTMLElement)?.focus();
+                            }
+                          }}
+                          className="flex items-center px-5 py-2.5 text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:bg-[rgba(26,58,92,0.05)] focus-visible:text-[#1a3a5c] focus-visible:pl-[24px]"
                           style={{ color: "#4a5568" }}
                           onMouseEnter={(e) => {
                             e.currentTarget.style.background = "rgba(26,58,92,0.05)";
@@ -266,19 +297,9 @@ export default function Navbar() {
             {/* CTA Button */}
             <a
               href="#contact"
-              className="px-8 py-2.5 text-sm font-bold uppercase tracking-wider transition-all duration-300 hover:-translate-y-0.5"
+              className="bg-brand-navy hover:bg-brand-blue hover:shadow-[0_6px_28px_rgba(42,90,140,0.4)] px-8 py-2.5 text-sm font-bold uppercase tracking-wider text-white transition-all duration-300 hover:-translate-y-0.5"
               style={{
-                background: "#1a3a5c",
-                color: "#ffffff",
                 clipPath: "polygon(12px 0, 100% 0, calc(100% - 12px) 100%, 0 100%)",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = "#2a5a8c";
-                e.currentTarget.style.boxShadow = "0 6px 28px rgba(42,90,140,0.4)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = "#1a3a5c";
-                e.currentTarget.style.boxShadow = "none";
               }}
             >
               Get Started
@@ -289,49 +310,54 @@ export default function Navbar() {
         {/* Logo — sits on the left, vertically centered across both bars */}
         <div className={`mx-auto flex max-w-7xl items-center px-6 lg:px-8 transition-all duration-500 ease-in-out ${scrolled ? "py-[14px]" : "py-5"}`}>
           <a href="#" className="relative flex items-center">
-            <img 
+            <Image 
               src="/logo.png" 
               alt="SKYLIS" 
-              className={`w-auto transition-all duration-500 ease-in-out ${scrolled ? "h-8" : "h-9"}`} 
+              width={140}
+              height={36}
+              className={`w-auto transition-all duration-300 ease-out ${scrolled ? "h-8" : "h-9"}`} 
             />
           </a>
         </div>
 
-        {/* Mobile Hamburger */}
+        {/* Mobile Hamburger (Touch target >= 44x44px) */}
         <button
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-[60] flex h-11 w-11 flex-col items-center justify-center gap-1.5 md:hidden"
           onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
         >
           <span
-            className={`block h-[2px] w-6 rounded-full transition-all duration-300 ${
-              menuOpen ? "translate-y-[5px] rotate-45" : ""
+            className={`block h-[2px] w-6 rounded-full transition-all duration-300 origin-center ${
+              menuOpen ? "translate-y-[8px] rotate-45" : ""
             }`}
             style={{ background: "#1a3a5c" }}
           />
           <span
             className={`block h-[2px] w-6 rounded-full transition-all duration-300 ${
-              menuOpen ? "opacity-0" : ""
+              menuOpen ? "opacity-0" : "opacity-100"
             }`}
             style={{ background: "#1a3a5c" }}
           />
           <span
-            className={`block h-[2px] w-6 rounded-full transition-all duration-300 ${
-              menuOpen ? "-translate-y-[5px] -rotate-45" : ""
+            className={`block h-[2px] w-6 rounded-full transition-all duration-300 origin-center ${
+              menuOpen ? "-translate-y-[8px] -rotate-45" : ""
             }`}
             style={{ background: "#1a3a5c" }}
           />
         </button>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-40 flex flex-col items-center justify-center transition-all duration-500 md:hidden ${
+        className={`fixed inset-0 z-50 flex flex-col items-center justify-center transition-all duration-500 md:hidden ${
           menuOpen
-            ? "pointer-events-auto opacity-100"
-            : "pointer-events-none opacity-0"
+            ? "pointer-events-auto opacity-100 translate-y-0"
+            : "pointer-events-none opacity-0 -translate-y-8"
         }`}
-        style={{ background: "rgba(255, 255, 255, 0.98)" }}
+        style={{ background: "rgba(255, 255, 255, 0.98)", backdropFilter: "blur(10px)" }}
+        role="dialog"
+        aria-modal="true"
       >
         <div className="flex flex-col items-center gap-6 w-full max-w-sm px-6">
           {navItems.map((item, i) => (
