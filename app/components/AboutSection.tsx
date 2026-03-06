@@ -18,13 +18,13 @@ export default function AboutSection() {
           backgroundSize: "40px 40px",
         }}
       />
-      <div
-        className="pointer-events-none absolute right-0 top-20 h-64 w-64 opacity-5"
+      {/* <div
+        className="pointer-events-none absolute right-0 top-0 bottom-0 w-[10%] opacity-5"
         style={{
           background: "#1a3a5c",
-          clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)",
+          clipPath: "polygon(100% 0, 100% 100%, 0 100%)",
         }}
-      />
+      /> */}
 
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center gap-16 px-6 lg:flex-row lg:items-center lg:gap-20 lg:px-8">
         
@@ -73,7 +73,7 @@ export default function AboutSection() {
 
           {/* Headline */}
           <h2
-            className="mb-8 text-4xl font-extrabold leading-tight sm:text-5xl md:text-5xl lg:text-5xl"
+            className="mb-4 text-3xl font-extrabold leading-tight sm:text-4xl"
             style={{ color: "#0f1f2e", fontFamily: "var(--font-montserrat), sans-serif" }}
           >
             We don’t just build campaigns.<br/><br className="lg:hidden"/>
