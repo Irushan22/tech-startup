@@ -8,7 +8,7 @@ import "swiper/css/pagination";
 export default function TestimonialSection() {
   const testimonials = [
     {
-      quote: "CODERAFT didn't just rebuild our website; they re-engineered our entire digital acquisition channel. We saw a 300% increase in qualified leads within the first quarter.",
+      quote: "SKYLIS didn't just rebuild our website; they re-engineered our entire digital acquisition channel. We saw a 300% increase in qualified leads within the first quarter.",
       author: "Sarah Jenkins",
       role: "CMO, FinTech Innovators",
       image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&q=80",
@@ -32,7 +32,7 @@ export default function TestimonialSection() {
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80",
     },
     {
-      quote: "From brand refresh to performance marketing, CODERAFT delivered end-to-end with precision. Our pipeline has never looked healthier.",
+      quote: "From brand refresh to performance marketing, SKYLIS delivered end-to-end with precision. Our pipeline has never looked healthier.",
       author: "Amira Hassan",
       role: "CEO, NexaHealth",
       image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&q=80",

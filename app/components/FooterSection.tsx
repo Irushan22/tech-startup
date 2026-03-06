@@ -49,7 +49,7 @@ export default function FooterSection() {
               className="text-2xl font-extrabold text-white mb-4"
               style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
             >
-              CODE<span className="text-white/40">RAFT</span>
+              SKY<span className="text-white/40">LIS</span>
             </h3>
             <p className="text-sm leading-relaxed text-white/40 max-w-sm mb-8">
               A full-service digital marketing agency engineering data-driven growth for ambitious brands worldwide.
@@ -161,7 +161,7 @@ export default function FooterSection() {
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-xs text-white/25">
-            © {new Date().getFullYear()} CODERAFT. All rights reserved.
+            © {new Date().getFullYear()} SKYLIS. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             <a href="#" className="text-xs text-white/25 hover:text-white/50 transition-colors duration-200">

@@ -22,7 +22,7 @@ const raleway = Raleway({
 });
 
 export const metadata: Metadata = {
-  title: "CODERAFT — Web Development & Digital Solutions",
+  title: "SKYLIS — Web Development & Digital Solutions",
   description:
     "From custom web apps to enterprise CMS solutions — we craft high-performance digital experiences that drive growth for your business.",
   keywords: [

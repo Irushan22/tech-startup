@@ -82,7 +82,7 @@ export default function AboutSection() {
 
           {/* Description */}
           <p className="mb-6 text-lg leading-relaxed text-[#4a5e72]">
-            Based at the intersection of creativity and data, CODERAFT is a full-service digital marketing agency dedicated to empowering businesses. We understand that in today's saturated digital landscape, generalized strategies fall flat. 
+            Based at the intersection of creativity and data, SKYLIS is a full-service digital marketing agency dedicated to empowering businesses. We understand that in today's saturated digital landscape, generalized strategies fall flat. 
           </p>
           <p className="mb-2 text-lg leading-relaxed text-[#4a5e72]">
             That’s why we craft bespoke, laser-focused solutions tailored precisely to your brand’s DNA and your audience’s behavior. From technical SEO frameworks to immersive content campaigns, we engineer growth systems that scale.

@@ -92,7 +92,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <p className="text-xs font-bold uppercase tracking-wider text-white/40">Email Us</p>
-                  <p className="text-white font-medium text-sm">hello@coderaft.agency</p>
+                  <p className="text-white font-medium text-sm">hello@skylis.agency</p>
                 </div>
               </div>
 
