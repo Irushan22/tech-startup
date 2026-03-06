@@ -3,21 +3,11 @@
 export default function HeroSection() {
   return (
     <section
-      className="relative h-screen overflow-hidden flex items-center"
+      className="relative h-screen overflow-hidden flex items-center bg-white"
       style={{
-        background: "linear-gradient(135deg, #f8fafc 0%, #eef2f7 50%, #e8eef5 100%)",
         fontFamily: "var(--font-raleway), sans-serif",
       }}
     >
-      {/* Grid dots — subtle background pattern */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle, rgba(26,58,92,0.5) 1px, transparent 1px)",
-          backgroundSize: "40px 40px",
-        }}
-      />
 
       {/* ===== Content ===== */}
       <div className="relative z-10 flex h-full w-full">
@@ -103,7 +93,7 @@ export default function HeroSection() {
         <div 
           className="absolute right-0 top-0 bottom-0 z-0 hidden lg:block w-[55%]"
           style={{
-            clipPath: "polygon(120px 0, 100% 0, 100% 100%, 0 100%)",
+            clipPath: "polygon(140px 0, 100% 0, 100% 100%, 0 100%)",
           }}
         >
           {/* Main image */}

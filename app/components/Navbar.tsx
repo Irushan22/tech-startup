@@ -29,11 +29,6 @@ const navItems = [
   {
     label: "About",
     href: "#about",
-    children: [
-      { label: "Our Story", href: "#story" },
-      { label: "Our Team", href: "#team" },
-      { label: "Careers", href: "#careers" },
-    ],
   },
   { label: "Blog", href: "#blog" },
   { label: "Contact", href: "#contact" },
