@@ -9,15 +9,28 @@ export default function ContactSection() {
     company: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted:", formData);
+    setIsSubmitting(true);
+    
+    // Simulate API call
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+    
+    setIsSubmitting(false);
+    setIsSuccess(true);
+    setFormData({ name: "", email: "", company: "", message: "" });
+
+    // Reset success message after 5 seconds
+    setTimeout(() => {
+      setIsSuccess(false);
+    }, 5000);
   };
 
   return (
@@ -131,107 +144,134 @@ export default function ContactSection() {
 
           {/* Right Side – Contact Form */}
           <div>
-            <form
-              onSubmit={handleSubmit}
-              className="relative bg-white/[0.04] backdrop-blur-sm p-8 lg:p-10"
+            <div
+              className="relative bg-white/[0.04] backdrop-blur-sm p-8 lg:p-10 min-h-[500px] flex flex-col justify-center"
               style={{
                 border: "1px solid rgba(255,255,255,0.08)",
               }}
             >
-              <div className="space-y-5">
-                {/* Name */}
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-white/40 mb-2">
-                    Your Name
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="John Doe"
-                    className="w-full bg-white/[0.06] text-white text-sm px-4 py-3 outline-none placeholder-white/20 transition-colors duration-200 focus:bg-white/[0.1]"
-                    style={{
-                      clipPath: "polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)",
-                      border: "1px solid rgba(255,255,255,0.08)",
-                    }}
-                  />
+              {isSuccess ? (
+                <div className="text-center animate-in fade-in zoom-in duration-500">
+                  <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-white/10" style={{ clipPath: "polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)" }}>
+                    <svg className="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-3" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>Message Sent</h3>
+                  <p className="text-white/60">Thank you for reaching out. Our team will get back to you within 24 hours.</p>
                 </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="animate-in fade-in duration-500">
+                  <div className="space-y-5">
+                    {/* Name */}
+                    <div>
+                      <label className="block text-xs font-bold uppercase tracking-wider text-white/40 mb-2">
+                        Your Name
+                      </label>
+                      <input
+                        required
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        placeholder="John Doe"
+                        className="w-full bg-white/[0.06] text-white text-sm px-4 py-3 outline-none placeholder-white/20 transition-colors duration-200 focus:bg-white/[0.1] focus-visible:ring-2 focus-visible:ring-white/30"
+                        style={{
+                          clipPath: "polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)",
+                          border: "1px solid rgba(255,255,255,0.08)",
+                        }}
+                      />
+                    </div>
 
-                {/* Email */}
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-white/40 mb-2">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="john@company.com"
-                    className="w-full bg-white/[0.06] text-white text-sm px-4 py-3 outline-none placeholder-white/20 transition-colors duration-200 focus:bg-white/[0.1]"
+                    {/* Email */}
+                    <div>
+                      <label className="block text-xs font-bold uppercase tracking-wider text-white/40 mb-2">
+                        Email Address
+                      </label>
+                      <input
+                        required
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder="john@company.com"
+                        className="w-full bg-white/[0.06] text-white text-sm px-4 py-3 outline-none placeholder-white/20 transition-colors duration-200 focus:bg-white/[0.1] focus-visible:ring-2 focus-visible:ring-white/30"
+                        style={{
+                          clipPath: "polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)",
+                          border: "1px solid rgba(255,255,255,0.08)",
+                        }}
+                      />
+                    </div>
+
+                    {/* Company */}
+                    <div>
+                      <label className="block text-xs font-bold uppercase tracking-wider text-white/40 mb-2">
+                        Company
+                      </label>
+                      <input
+                        type="text"
+                        name="company"
+                        value={formData.company}
+                        onChange={handleChange}
+                        placeholder="Your Company"
+                        className="w-full bg-white/[0.06] text-white text-sm px-4 py-3 outline-none placeholder-white/20 transition-colors duration-200 focus:bg-white/[0.1] focus-visible:ring-2 focus-visible:ring-white/30"
+                        style={{
+                          clipPath: "polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)",
+                          border: "1px solid rgba(255,255,255,0.08)",
+                        }}
+                      />
+                    </div>
+
+                    {/* Message */}
+                    <div>
+                      <label className="block text-xs font-bold uppercase tracking-wider text-white/40 mb-2">
+                        Message
+                      </label>
+                      <textarea
+                        required
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        placeholder="Tell us about your project..."
+                        rows={4}
+                        className="w-full bg-white/[0.06] text-white text-sm px-4 py-3 outline-none placeholder-white/20 transition-colors duration-200 focus:bg-white/[0.1] resize-none focus-visible:ring-2 focus-visible:ring-white/30"
+                        style={{
+                          clipPath: "polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)",
+                          border: "1px solid rgba(255,255,255,0.08)",
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Submit Button */}
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="mt-8 relative w-full inline-flex items-center justify-center px-8 py-4 text-sm font-bold uppercase tracking-wider transition-all duration-300 hover:opacity-90 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a3a5c]"
                     style={{
-                      clipPath: "polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)",
-                      border: "1px solid rgba(255,255,255,0.08)",
+                      background: "#ffffff",
+                      color: "#1a3a5c",
+                      clipPath: "polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%)",
                     }}
-                  />
-                </div>
-
-                {/* Company */}
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-white/40 mb-2">
-                    Company
-                  </label>
-                  <input
-                    type="text"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleChange}
-                    placeholder="Your Company"
-                    className="w-full bg-white/[0.06] text-white text-sm px-4 py-3 outline-none placeholder-white/20 transition-colors duration-200 focus:bg-white/[0.1]"
-                    style={{
-                      clipPath: "polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)",
-                      border: "1px solid rgba(255,255,255,0.08)",
-                    }}
-                  />
-                </div>
-
-                {/* Message */}
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-white/40 mb-2">
-                    Message
-                  </label>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Tell us about your project..."
-                    rows={4}
-                    className="w-full bg-white/[0.06] text-white text-sm px-4 py-3 outline-none placeholder-white/20 transition-colors duration-200 focus:bg-white/[0.1] resize-none"
-                    style={{
-                      clipPath: "polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)",
-                      border: "1px solid rgba(255,255,255,0.08)",
-                    }}
-                  />
-                </div>
-              </div>
-
-              {/* Submit Button */}
-              <button
-                type="submit"
-                className="mt-8 w-full inline-flex items-center justify-center px-8 py-4 text-sm font-bold uppercase tracking-wider transition-all duration-300 hover:opacity-90 cursor-pointer"
-                style={{
-                  background: "#ffffff",
-                  color: "#1a3a5c",
-                  clipPath: "polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%)",
-                }}
-              >
-                Send Message
-                <svg className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </button>
-            </form>
+                  >
+                    <span className={`inline-flex items-center transition-opacity duration-300 ${isSubmitting ? "opacity-0" : "opacity-100"}`}>
+                      Send Message
+                      <svg className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </span>
+                    {isSubmitting && (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <svg className="animate-spin h-5 w-5 text-[#1a3a5c]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                      </div>
+                    )}
+                  </button>
+                </form>
+              )}
+            </div>
           </div>
 
         </div>

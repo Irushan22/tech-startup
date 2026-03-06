@@ -173,14 +173,21 @@ export default function PortfolioSection() {
         <div className="mt-16 flex justify-center">
           <a
             href="#portfolio"
-            className="group/btn inline-flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-[#1a3a5c] hover:text-[#0f1f2e] transition-colors duration-300"
+            className="inline-flex items-center justify-center gap-2 bg-[#1a3a5c] px-8 py-4 text-sm font-bold tracking-wider text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#0f1f2e] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1a3a5c] focus-visible:ring-offset-2"
+            style={{
+              clipPath: "polygon(12px 0, 100% 0, calc(100% - 12px) 100%, 0 100%)",
+            }}
           >
-            <span>View All Projects</span>
-            <span className="flex h-10 w-10 items-center justify-center border border-[#1a3a5c]/20 group-hover/btn:bg-[#1a3a5c] group-hover/btn:text-white transition-all duration-300">
-              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </span>
+            VIEW ALL PROJECTS
+            <svg
+              className="h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2.5}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
           </a>
         </div>
 

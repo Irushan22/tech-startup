@@ -36,13 +36,42 @@ const navItems = [
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileSubmenu, setMobileSubmenu] = useState<string | null>(null);
   const dropdownTimeout = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+
+      // Scroll Spy Logic
+      const sections = navItems
+        .map((item) => item.href.substring(1))
+        .filter((id) => id !== "");
+
+      let current = "";
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          // If the top of the section is anywhere from slightly above the viewport 
+          // to about 1/3 down the screen, consider it active
+          if (rect.top <= 150 && rect.bottom >= 150) {
+            current = section;
+          }
+        }
+      }
+      
+      // If we are at the very top of the page, "Home" is active.
+      if (window.scrollY < 100) {
+        current = "";
+      }
+
+      setActiveSection(current);
+    };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -149,10 +178,21 @@ export default function Navbar() {
               >
                 <a
                   href={item.href}
-                  className="group relative flex items-center gap-1 text-[13px] font-semibold uppercase tracking-widest transition-colors duration-300"
-                  style={{ color: "#3a4a5c" }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "#1a3a5c")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "#3a4a5c")}
+                  className={`group relative flex items-center gap-1 text-[13px] font-semibold uppercase tracking-widest transition-colors duration-300 ${
+                    (item.href === "#" && activeSection === "") || item.href === `#${activeSection}`
+                      ? "text-[#1a3a5c]"
+                      : "text-[#3a4a5c]"
+                  }`}
+                  onMouseEnter={(e) => {
+                    if ((item.href !== "#" || activeSection !== "") && item.href !== `#${activeSection}`) {
+                      e.currentTarget.style.color = "#1a3a5c";
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if ((item.href !== "#" || activeSection !== "") && item.href !== `#${activeSection}`) {
+                      e.currentTarget.style.color = "#3a4a5c";
+                    }
+                  }}
                 >
                   {item.label}
                   {item.children && (
@@ -167,7 +207,11 @@ export default function Navbar() {
                     </svg>
                   )}
                   <span
-                    className="absolute -bottom-1 left-0 h-[2px] w-0 transition-all duration-300 group-hover:w-full"
+                    className={`absolute -bottom-1 left-0 h-[2px] transition-all duration-300 group-hover:w-full ${
+                      (item.href === "#" && activeSection === "") || item.href === `#${activeSection}`
+                        ? "w-full"
+                        : "w-0"
+                    }`}
                     style={{ background: "linear-gradient(135deg, #1a3a5c, #2a5a8c)" }}
                   />
                 </a>

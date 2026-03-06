@@ -75,7 +75,7 @@ export default function HeroSection() {
             </a>
             <a
               href="#portfolio"
-              className="inline-flex items-center justify-center px-8 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center px-8 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1a3a5c]/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1a3a5c] focus-visible:ring-offset-2"
               style={{
                 background: "transparent",
                 color: "#1a3a5c",
