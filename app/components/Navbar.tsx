@@ -97,12 +97,17 @@ export default function Navbar() {
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
       <nav
-        className="relative"
-        style={{ background: "#ffffff", minHeight: "88px", boxShadow: "0 4px 12px rgba(26,58,92,0.15)", fontFamily: "var(--font-raleway), sans-serif" }}
+        className="relative transition-all duration-500 ease-in-out"
+        style={{ 
+          background: "#ffffff", 
+          minHeight: scrolled ? "64px" : "88px", 
+          boxShadow: "0 4px 12px rgba(26,58,92,0.15)", 
+          fontFamily: "var(--font-raleway), sans-serif" 
+        }}
       >
         {/* Top bar — absolutely positioned, extends to right edge of viewport */}
         <div
-          className="absolute top-0 right-0"
+          className={`absolute top-0 right-0 transition-all duration-500 ease-in-out ${scrolled ? "-translate-y-full opacity-0 pointer-events-none" : "translate-y-0 opacity-100"}`}
           style={{
             background: "#1a3a5c",
             height: "36px",
@@ -152,11 +157,11 @@ export default function Navbar() {
 
         {/* Bottom bar wrapper */}
         <div
-          className="absolute right-0"
+          className="absolute right-0 transition-all duration-500 ease-in-out"
           style={{
-            top: "36px",
+            top: scrolled ? "0px" : "36px",
             width: "78%",
-            height: "52px",
+            height: scrolled ? "64px" : "52px",
             filter: "drop-shadow(0 4px 12px rgba(26,58,92,0.15))",
           }}
         >
@@ -282,9 +287,13 @@ export default function Navbar() {
         </div>
 
         {/* Logo — sits on the left, vertically centered across both bars */}
-        <div className="mx-auto flex max-w-7xl items-center px-6 lg:px-8 py-5">
+        <div className={`mx-auto flex max-w-7xl items-center px-6 lg:px-8 transition-all duration-500 ease-in-out ${scrolled ? "py-[14px]" : "py-5"}`}>
           <a href="#" className="relative flex items-center">
-            <img src="/logo.png" alt="SKYLIS" className="h-9 w-auto" />
+            <img 
+              src="/logo.png" 
+              alt="SKYLIS" 
+              className={`w-auto transition-all duration-500 ease-in-out ${scrolled ? "h-8" : "h-9"}`} 
+            />
           </a>
         </div>
 
