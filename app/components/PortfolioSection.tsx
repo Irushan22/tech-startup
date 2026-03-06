@@ -1,171 +1,186 @@
 "use client";
 
+import { useState } from "react";
+
 export default function PortfolioSection() {
+  const [activeFilter, setActiveFilter] = useState("All");
+
+  const filters = ["All", "Marketing", "Branding", "Development", "SEO"];
+
   const projects = [
     {
       title: "FinTech App Launch",
-      category: "Performance Marketing",
+      category: "Marketing",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-      stats: "+240% User Acquisition",
+      stats: "+240%",
+      statsLabel: "User Acquisition",
     },
     {
       title: "EcoBrand Identity",
-      category: "Brand Strategy & Design",
+      category: "Branding",
       image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80",
-      stats: "Award-Winning Rebrand",
+      stats: "1st",
+      statsLabel: "Award-Winning",
     },
     {
       title: "Global E-Com Scaling",
-      category: "SEO & Content Marketing",
+      category: "SEO",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
-      stats: "$4M+ Organic Revenue",
+      stats: "$4M+",
+      statsLabel: "Organic Revenue",
     },
     {
       title: "SaaS Platform Redesign",
-      category: "Web Development & UX",
+      category: "Development",
       image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80",
-      stats: "-40% Bounce Rate",
+      stats: "-40%",
+      statsLabel: "Bounce Rate",
+    },
+    {
+      title: "Luxury Fashion Campaign",
+      category: "Marketing",
+      image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80",
+      stats: "3x",
+      statsLabel: "ROAS Growth",
+    },
+    {
+      title: "HealthTech Portal",
+      category: "Development",
+      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80",
+      stats: "+180%",
+      statsLabel: "Engagement",
     },
   ];
+
+  const filteredProjects = activeFilter === "All"
+    ? projects
+    : projects.filter((p) => p.category === activeFilter);
 
   return (
     <section
       id="portfolio"
-      className="relative bg-white min-h-screen overflow-hidden py-24 lg:py-32"
+      className="relative bg-[#f8fafc] overflow-hidden py-20"
       style={{
         fontFamily: "var(--font-raleway), sans-serif",
       }}
     >
-      {/* Subtle Background Elements */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.02]"
-        style={{
-          backgroundImage:
-            "linear-gradient(#1a3a5c 1px, transparent 1px), linear-gradient(90deg, #1a3a5c 1px, transparent 1px)",
-          backgroundSize: "40px 40px",
-        }}
-      />
-      <div
-        className="pointer-events-none absolute right-0 bottom-0 h-48 w-48 opacity-5"
-        style={{
-          background: "#1a3a5c",
-          clipPath: "polygon(100% 0, 100% 100%, 0 100%)",
-        }}
-      />
-
-      {/* Full-width container (No horizontal padding) */}
-      <div className="relative z-10 w-full">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 lg:px-8">
         
-        {/* Header Area (Centered constraint) */}
-        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-16 px-6 lg:px-8">
-          <div className="mb-2 flex items-center gap-4">
-            <span className="h-0.5 w-12" style={{ background: "#2a5a8c" }} />
-            <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "#2a5a8c" }}>
-              Our Work
-            </span>
-            <span className="h-0.5 w-12" style={{ background: "#2a5a8c" }} />
+        {/* Header Row */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-14">
+          <div>
+            <div className="mb-3 flex items-center gap-4">
+              <span className="h-0.5 w-12" style={{ background: "#2a5a8c" }} />
+              <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "#2a5a8c" }}>
+                Our Work
+              </span>
+            </div>
+            <h2
+              className="text-3xl font-extrabold leading-tight sm:text-4xl"
+              style={{ color: "#0f1f2e", fontFamily: "var(--font-montserrat), sans-serif" }}
+            >
+              Case Studies that <span style={{ color: "#1a3a5c" }}>Prove the Process</span>
+            </h2>
           </div>
 
-          <h2
-            className="mb-2 text-3xl font-extrabold leading-tight sm:text-4xl"
-            style={{ color: "#0f1f2e", fontFamily: "var(--font-montserrat), sans-serif" }}
-          >
-            Case Studies that <span style={{ color: "#1a3a5c" }}>Prove the Process</span>
-          </h2>
-          
-          <p className="text-sm leading-relaxed text-[#4a5e72] font-medium hidden sm:block">
-            Take a look at how our customized, data-driven frameworks have generated measurable ROI and explosive growth for our partners.
-          </p>
+          {/* Filter Tabs */}
+          <div className="flex flex-wrap items-center gap-2 mt-6 md:mt-0">
+            {filters.map((f) => (
+              <button
+                key={f}
+                onClick={() => setActiveFilter(f)}
+                className={`px-4 py-2 text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
+                  activeFilter === f
+                    ? "bg-[#1a3a5c] text-white"
+                    : "bg-transparent text-[#1a3a5c]/60 hover:text-[#1a3a5c] border border-[#1a3a5c]/15 hover:border-[#1a3a5c]/40"
+                }`}
+              >
+                {f}
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Portfolio Grid - Display 4 items spanning the full width, touching edges */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-full">
-          {projects.map((project, i) => (
+        {/* Portfolio Grid – 3 cols, no gaps */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-[220px]">
+          {filteredProjects.map((project, i) => (
             <div
-              key={i}
-              className="group relative overflow-hidden"
-              style={{
-                clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)", // Removed clip path cut from images so they touch perfectly
-              }}
+              key={project.title}
+              className="group relative overflow-hidden cursor-pointer transition-all duration-500"
             >
-              {/* Image background - TALLER */}
-              <div 
-                className="relative h-96 sm:h-[450px] lg:h-[600px] w-full transform transition-transform duration-700 ease-out group-hover:scale-105"
-              >
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="absolute inset-0 h-full w-full object-cover"
-                />
+              {/* Image */}
+              <img
+                src={project.image}
+                alt={project.title}
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+              />
+
+              {/* Static dark gradient */}
+              <div
+                className="absolute inset-0"
+                style={{
+                  background: "linear-gradient(to top, rgba(15,31,46,0.3) 0%, rgba(15,31,46,0.6) 50%, rgba(15,31,46,0.9) 100%)",
+                }}
+              />
+
+              {/* Content – always visible */}
+              <div className="absolute inset-0 flex flex-col justify-between p-5 lg:p-6">
                 
-                {/* Default Gradient Overlay */}
-                <div 
-                  className="absolute inset-0 opacity-40 transition-opacity duration-300 group-hover:opacity-60"
-                  style={{
-                    background: "linear-gradient(to top, #0f1f2e, transparent)",
-                  }}
-                />
+                {/* Top Row – Category + Stats */}
+                <div className="flex items-start justify-between">
+                  <span className="px-2 py-1 text-[9px] font-bold uppercase tracking-widest text-white bg-white/10 backdrop-blur-sm">
+                    {project.category}
+                  </span>
 
-                {/* Navy Blue Hover Overlay */}
-                <div 
-                  className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-80"
-                  style={{ background: "#1a3a5c" }}
-                />
-              </div>
-
-              {/* Text Content overlaying the image */}
-              <div className="absolute inset-0 flex flex-col justify-end p-6 lg:p-8">
-                
-                {/* Sliding Category Tag */}
-                <span 
-                  className="mb-2 inline-block self-start px-3 py-1 text-xs font-bold uppercase tracking-wider text-[#1a3a5c] bg-white transform translate-y-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"
-                  style={{ clipPath: "polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px)" }}
-                >
-                  {project.category}
-                </span>
-
-                {/* Title */}
-                <h3 
-                  className="text-2xl font-bold text-white mb-1 transform translate-y-2 transition-transform duration-300 group-hover:translate-y-0"
-                  style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
-                >
-                  {project.title}
-                </h3>
-                
-                {/* Highlighted Stat / Result */}
-                <p 
-                  className="text-white text-opacity-80 text-sm font-medium transform translate-y-2 transition-transform duration-300 group-hover:translate-y-0"
-                >
-                  {project.stats}
-                </p>
-
-                {/* Arrow Icon (Hover Reveal) */}
-                <div className="absolute right-6 lg:right-8 bottom-6 lg:bottom-8 transform translate-x-4 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
-                  <div className="flex h-10 w-10 items-center justify-center bg-white" style={{ clipPath: "polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px)" }}>
-                    <svg className="h-5 w-5 text-[#1a3a5c]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
+                  {/* Stats Badge */}
+                  <div className="text-right">
+                    <span
+                      className="text-2xl font-extrabold text-white block leading-none"
+                      style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                    >
+                      {project.stats}
+                    </span>
+                    <span className="text-[9px] font-bold uppercase tracking-widest text-white/60 mt-0.5 block">
+                      {project.statsLabel}
+                    </span>
                   </div>
                 </div>
 
+                {/* Bottom Row – Title + Arrow */}
+                <div className="flex items-end justify-between">
+                  <div>
+                    <h3
+                      className="text-lg lg:text-xl font-bold text-white leading-tight"
+                      style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                    >
+                      {project.title}
+                    </h3>
+                  </div>
+
+                  {/* Arrow */}
+                  <div className="flex h-9 w-9 items-center justify-center bg-white text-[#1a3a5c]">
+                    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+                    </svg>
+                  </div>
+                </div>
               </div>
             </div>
           ))}
         </div>
 
         {/* View All CTA */}
-        <div className="mt-12 flex justify-center">
+        <div className="mt-16 flex justify-center">
           <a
             href="#portfolio"
-            className="inline-flex items-center justify-center px-8 py-3.5 text-sm font-bold uppercase tracking-wider transition-all duration-300 hover:bg-[#2a5a8c]"
-            style={{
-              background: "#1a3a5c",
-              color: "#ffffff",
-              clipPath: "polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%)",
-              boxShadow: "0 4px 14px rgba(26,58,92,0.25)"
-            }}
+            className="group/btn inline-flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-[#1a3a5c] hover:text-[#0f1f2e] transition-colors duration-300"
           >
-            View All Projects
+            <span>View All Projects</span>
+            <span className="flex h-10 w-10 items-center justify-center border border-[#1a3a5c]/20 group-hover/btn:bg-[#1a3a5c] group-hover/btn:text-white transition-all duration-300">
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </span>
           </a>
         </div>
 

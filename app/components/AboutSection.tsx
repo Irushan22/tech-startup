@@ -4,7 +4,7 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="relative flex items-center bg-white min-h-[calc(100vh-88px)] overflow-hidden pt-20 pb-20"
+      className="relative flex items-center bg-[#f8fafc] min-h-[calc(100vh-88px)] overflow-hidden pt-20 pb-20"
       style={{
         fontFamily: "var(--font-raleway), sans-serif",
       }}

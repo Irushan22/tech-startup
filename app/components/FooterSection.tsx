@@ -37,14 +37,6 @@ export default function FooterSection() {
       {/* Accent line at the very top */}
       <div className="absolute top-0 left-0 right-0 h-1" style={{ background: "linear-gradient(90deg, transparent, #1a3a5c, transparent)" }} />
 
-      {/* Background Shape */}
-      <div
-        className="pointer-events-none absolute right-0 top-0 h-full w-[25%] opacity-[0.03]"
-        style={{
-          background: "#ffffff",
-          clipPath: "polygon(50% 0, 100% 0, 100% 100%, 0 100%)",
-        }}
-      />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 lg:px-8">
 

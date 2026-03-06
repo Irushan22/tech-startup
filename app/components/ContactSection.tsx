@@ -31,19 +31,19 @@ export default function ContactSection() {
     >
       {/* Background Geometric Elements */}
       <div
-        className="pointer-events-none absolute left-0 top-0 h-full w-[50%] opacity-[0.04]"
+        className="pointer-events-none absolute left-0 top-0 h-full w-[100%] opacity-[0.04]"
         style={{
-          clipPath: "polygon(0 0, 100% 0, 60% 100%, 0 100%)",
+        //   clipPath: "polygon(0 0, 100% 0, 80% 100%, 0 100%)",
           background: "#ffffff",
         }}
       />
-      <div
+      {/* <div
         className="pointer-events-none absolute right-0 bottom-0 h-full w-[35%] opacity-[0.03]"
         style={{
           clipPath: "polygon(40% 0, 100% 0, 100% 100%, 0 100%)",
           background: "#ffffff",
         }}
-      />
+      /> */}
 
       {/* Subtle Grid overlay */}
       <div
@@ -135,7 +135,6 @@ export default function ContactSection() {
               onSubmit={handleSubmit}
               className="relative bg-white/[0.04] backdrop-blur-sm p-8 lg:p-10"
               style={{
-                clipPath: "polygon(24px 0, 100% 0, 100% calc(100% - 24px), calc(100% - 24px) 100%, 0 100%, 0 24px)",
                 border: "1px solid rgba(255,255,255,0.08)",
               }}
             >
