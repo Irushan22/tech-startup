@@ -10,22 +10,19 @@ const navItems = [
     label: "Services",
     href: "#services",
     children: [
-      { label: "Digital Marketing", href: "#digital-marketing" },
+      { label: "Web Development", href: "#web-development" },
+      { label: "App Development", href: "#app-development" },
+      { label: "Landing Pages", href: "#landing-pages" },
+      { label: "WordPress Development", href: "#wordpress" },
+      { label: "Shopify Stores", href: "#shopify" },
       { label: "SEO & SEM", href: "#seo" },
-      { label: "Social Media Marketing", href: "#social-media" },
-      { label: "Content Strategy", href: "#content" },
-      { label: "Branding & Identity", href: "#branding" },
-      { label: "PPC Advertising", href: "#ppc" },
+      { label: "Digital Marketing", href: "#digital-marketing" },
+      { label: "UI/UX Design", href: "#design" },
     ],
   },
   {
     label: "Portfolio",
     href: "#portfolio",
-    children: [
-      { label: "Case Studies", href: "#case-studies" },
-      { label: "Client Projects", href: "#projects" },
-      { label: "Success Stories", href: "#success-stories" },
-    ],
   },
   {
     label: "About",
@@ -240,13 +237,13 @@ export default function Navbar() {
                 {item.children && openDropdown === item.label && (
                   <div
                     className="absolute left-0 top-full pt-3"
-                    style={{ minWidth: "220px", zIndex: 50 }}
+                    style={{ minWidth: item.children.length > 6 ? "460px" : "220px", zIndex: 50 }}
                     onMouseEnter={() => handleMouseEnter(item.label)}
                     onMouseLeave={handleMouseLeave}
                     role="menu"
                   >
                     <div
-                      className="rounded-sm py-2"
+                      className={`rounded-sm py-3 px-2 ${item.children.length > 6 ? "grid grid-cols-2 gap-x-2 gap-y-1" : ""}`}
                       style={{
                         background: "#ffffff",
                         boxShadow: "0 8px 30px rgba(26,58,92,0.15), 0 2px 8px rgba(26,58,92,0.08)",
@@ -272,17 +269,17 @@ export default function Navbar() {
                               (e.currentTarget.closest('.relative')?.querySelector('a') as HTMLElement)?.focus();
                             }
                           }}
-                          className="flex items-center px-5 py-2.5 text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:bg-[rgba(26,58,92,0.05)] focus-visible:text-[#1a3a5c] focus-visible:pl-[24px]"
+                          className="flex items-center rounded px-4 py-2.5 text-[13.5px] font-medium transition-all duration-200 focus-visible:outline-none focus-visible:bg-[rgba(26,58,92,0.05)] focus-visible:text-brand-navy focus-visible:pl-[20px]"
                           style={{ color: "#4a5568" }}
                           onMouseEnter={(e) => {
                             e.currentTarget.style.background = "rgba(26,58,92,0.05)";
-                            e.currentTarget.style.color = "#1a3a5c";
-                            e.currentTarget.style.paddingLeft = "24px";
+                            e.currentTarget.style.color = "var(--brand-navy)";
+                            e.currentTarget.style.paddingLeft = "20px";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.background = "transparent";
                             e.currentTarget.style.color = "#4a5568";
-                            e.currentTarget.style.paddingLeft = "20px";
+                            e.currentTarget.style.paddingLeft = "16px";
                           }}
                         >
                           {child.label}
