@@ -64,16 +64,16 @@ export default function AboutSection() {
         <div className="flex w-full lg:w-1/2 flex-col items-center text-center lg:items-start lg:text-left">
           
           {/* Section Subheading */}
-          <div className="mb-6 flex items-center gap-4">
+          <div className="mb-3 flex items-center gap-4">
             <span className="h-0.5 w-12" style={{ background: "#2a5a8c" }} />
-            <span className="text-sm font-bold uppercase tracking-widest" style={{ color: "#2a5a8c" }}>
+            <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "#2a5a8c" }}>
               About Us
             </span>
           </div>
 
           {/* Headline */}
           <h2
-            className="mb-4 text-3xl font-extrabold leading-tight sm:text-4xl"
+            className="text-3xl font-extrabold leading-tight sm:text-4xl"
             style={{ color: "#0f1f2e", fontFamily: "var(--font-montserrat), sans-serif" }}
           >
             We don’t just build campaigns.<br/><br className="lg:hidden"/>
@@ -81,7 +81,7 @@ export default function AboutSection() {
           </h2>
 
           {/* Description */}
-          <p className="mb-6 text-lg leading-relaxed text-[#4a5e72]">
+          <p className="mt-8 mb-6 text-lg leading-relaxed text-[#4a5e72]">
             Based at the intersection of creativity and data, SKYLIS is a full-service digital marketing agency dedicated to empowering businesses. We understand that in today's saturated digital landscape, generalized strategies fall flat. 
           </p>
           <p className="mb-2 text-lg leading-relaxed text-[#4a5e72]">

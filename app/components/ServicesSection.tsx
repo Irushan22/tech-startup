@@ -1,13 +1,24 @@
 "use client";
 
+import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
+type Service = {
+  title: string;
+  desc: string;
+  icon: React.JSX.Element;
+  num: string;
+  details: string[];
+};
+
 export default function ServicesSection() {
-  const services = [
+  const [selectedService, setSelectedService] = useState<Service | null>(null);
+
+  const services: Service[] = [
     {
       title: "Search Engine Optimization",
       desc: "Data-backed SEO strategies to dominate search results and drive high-intent organic traffic to your brand.",
@@ -18,6 +29,12 @@ export default function ServicesSection() {
         </svg>
       ),
       num: "01",
+      details: [
+        "Comprehensive Technical SEO Audits",
+        "High-intent Keyword Strategy & Mapping",
+        "Authoritative Link Building Campaigns",
+        "Local SEO & Google Business Optimization"
+      ]
     },
     {
       title: "Performance Marketing",
@@ -28,6 +45,12 @@ export default function ServicesSection() {
         </svg>
       ),
       num: "02",
+      details: [
+        "Google Search & Shopping Ads Management",
+        "Social Media Advertising (Meta, TikTok, LinkedIn)",
+        "Advanced Retargeting & Lookalike Audiences",
+        "A/B Ad Creative & Copy Testing"
+      ]
     },
     {
       title: "Brand Strategy & Identity",
@@ -38,6 +61,12 @@ export default function ServicesSection() {
         </svg>
       ),
       num: "03",
+      details: [
+        "Brand Archetype & Voice Development",
+        "Logo Design & Visual Asset Creation",
+        "Comprehensive Brand Guidelines",
+        "Market Positioning Strategy"
+      ]
     },
     {
       title: "Web Development",
@@ -48,6 +77,12 @@ export default function ServicesSection() {
         </svg>
       ),
       num: "04",
+      details: [
+        "Custom Frontend Engineering (React/Next.js)",
+        "E-Commerce Solutions (Shopify/WooCommerce)",
+        "CMS Architecture & Migration (WordPress/Webflow)",
+        "Technical Performance & Speed Optimization"
+      ]
     },
     {
       title: "Content Marketing",
@@ -58,6 +93,12 @@ export default function ServicesSection() {
         </svg>
       ),
       num: "05",
+      details: [
+        "Editorial Calendar & Content Strategy",
+        "Long-form SEO Articles & Blog Posts",
+        "Whitepapers, E-Books & Case Studies",
+        "Email Newsletters & Nurture Sequences"
+      ]
     },
     {
       title: "Conversion Optimization",
@@ -68,6 +109,12 @@ export default function ServicesSection() {
         </svg>
       ),
       num: "06",
+      details: [
+        "Heatmap & User Session Analysis",
+        "Multivariate Landing Page Testing",
+        "Checkout Funnel Streamlining",
+        "Conversion Copywriting Refinements"
+      ]
     },
   ];
 
@@ -145,6 +192,7 @@ export default function ServicesSection() {
           {services.map((service, i) => (
             <SwiperSlide key={i}>
               <div
+                onClick={() => setSelectedService(service)}
                 className="group relative flex flex-col justify-between h-[320px] p-8 lg:p-10 cursor-pointer transition-all duration-500 hover:shadow-2xl"
                 style={{
                   background: "#f8fafc",
@@ -198,10 +246,87 @@ export default function ServicesSection() {
         </Swiper>
       </div>
 
-      {/* Custom Styles for Swiper */}
+      {/* Detail Popup Modal */}
+      {selectedService && (
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6"
+          onClick={() => setSelectedService(null)}
+          style={{ background: "rgba(15, 31, 46, 0.8)", backdropFilter: "blur(8px)" }}
+        >
+          {/* Modal Container */}
+          <div 
+            className="relative w-full max-w-2xl overflow-hidden bg-white shadow-2xl animate-fade-in-up"
+            onClick={(e) => e.stopPropagation()} 
+            style={{ animation: "fade-in-up 0.3s ease-out forwards" }}
+          >
+            {/* Modal Header */}
+            <div className="flex items-center justify-between bg-white px-8 py-6 border-b border-[var(--border-subtle)]">
+              <div className="flex items-center gap-4">
+                <div 
+                    className="flex h-12 w-12 items-center justify-center rounded-sm bg-[var(--brand-navy)] text-white shadow-lg"
+                >
+                  {selectedService.icon}
+                </div>
+                <h3 className="text-2xl font-bold" style={{ color: "var(--text-primary)", fontFamily: "var(--font-montserrat), sans-serif" }}>
+                  {selectedService.title}
+                </h3>
+              </div>
+              <button 
+                onClick={() => setSelectedService(null)}
+                className="text-[var(--text-muted)] hover:text-[var(--brand-navy)] transition-colors p-2"
+              >
+                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Modal Body */}
+            <div className="p-8">
+              <p className="text-lg text-[var(--text-secondary)] leading-relaxed mb-8">
+                {selectedService.desc}
+              </p>
+
+              <h4 className="text-sm font-bold uppercase tracking-widest text-[var(--brand-blue)] mb-4">Core Capabilities</h4>
+              
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {selectedService.details.map((detail, idx) => (
+                  <li key={idx} className="flex items-start gap-3 text-sm font-medium text-[var(--text-primary)]">
+                    <svg className="h-5 w-5 shrink-0 text-[var(--brand-navy)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                    {detail}
+                  </li>
+                ))}
+              </ul>
+
+              {/* Call to Action */}
+              <div className="mt-10 pt-6 border-t border-gray-100 flex justify-end">
+                <a
+                  href="#contact"
+                  onClick={() => setSelectedService(null)}
+                  className="inline-flex items-center justify-center gap-2 px-8 py-3 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+                  style={{
+                    background: "var(--brand-navy)",
+                  }}
+                >
+                  Request Consultation
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Custom Styles for Swiper & Animation */}
       <style jsx global>{`
         #services .swiper-wrapper {
           padding-bottom: 8px;
+        }
+
+        @keyframes fade-in-up {
+          from { opacity: 0; transform: translateY(20px) scale(0.98); }
+          to { opacity: 1; transform: translateY(0) scale(1); }
         }
       `}</style>
     </section>

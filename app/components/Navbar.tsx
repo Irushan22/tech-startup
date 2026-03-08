@@ -4,21 +4,17 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 
 // Navigation data with dropdowns for a marketing agency
-const navItems = [
+type NavItem = {
+  label: string;
+  href: string;
+  children?: { label: string; href: string }[];
+};
+
+const navItems: NavItem[] = [
   { label: "Home", href: "#" },
   {
     label: "Services",
     href: "#services",
-    children: [
-      { label: "Web Development", href: "#web-development" },
-      { label: "App Development", href: "#app-development" },
-      { label: "Landing Pages", href: "#landing-pages" },
-      { label: "WordPress Development", href: "#wordpress" },
-      { label: "Shopify Stores", href: "#shopify" },
-      { label: "SEO & SEM", href: "#seo" },
-      { label: "Digital Marketing", href: "#digital-marketing" },
-      { label: "UI/UX Design", href: "#design" },
-    ],
   },
   {
     label: "Portfolio",

@@ -1,6 +1,43 @@
 "use client";
 
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+
+function AnimatedCounter({ end, duration = 2000, suffix = "" }: { end: number, duration?: number, suffix?: string }) {
+  const [count, setCount] = useState(0);
+  const [hasStarted, setHasStarted] = useState(false);
+  const ref = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting && !hasStarted) {
+          setHasStarted(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [hasStarted]);
+
+  useEffect(() => {
+    if (!hasStarted) return;
+    let startTimestamp: number | null = null;
+    const step = (timestamp: number) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      setCount(Math.floor(easeProgress * end));
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+    window.requestAnimationFrame(step);
+  }, [hasStarted, end, duration]);
+
+  return <span ref={ref}>{count}{suffix}</span>;
+}
 
 export default function HeroSection() {
   return (
@@ -123,17 +160,23 @@ export default function HeroSection() {
             }}
           >
             <div className="flex flex-col items-center">
-              <span className="text-3xl font-extrabold text-white">450+</span>
+              <span className="text-3xl font-extrabold text-white">
+                <AnimatedCounter end={450} suffix="+" />
+              </span>
               <span className="text-xs uppercase tracking-wider mt-1 font-semibold" style={{ color: "rgba(255,255,255,0.7)" }}>Projects Delivered</span>
             </div>
             <div className="h-10 w-px" style={{ background: "rgba(255,255,255,0.15)" }} />
             <div className="flex flex-col items-center">
-              <span className="text-3xl font-extrabold text-white">98%</span>
+              <span className="text-3xl font-extrabold text-white">
+                <AnimatedCounter end={98} suffix="%" />
+              </span>
               <span className="text-xs uppercase tracking-wider mt-1 font-semibold" style={{ color: "rgba(255,255,255,0.7)" }}>Success Rate</span>
             </div>
             <div className="h-10 w-px" style={{ background: "rgba(255,255,255,0.15)" }} />
             <div className="flex flex-col items-center">
-              <span className="text-3xl font-extrabold text-white">12M+</span>
+              <span className="text-3xl font-extrabold text-white">
+                <AnimatedCounter end={12} suffix="M+" />
+              </span>
               <span className="text-xs uppercase tracking-wider mt-1 font-semibold" style={{ color: "rgba(255,255,255,0.7)" }}>Revenue Generated</span>
             </div>
           </div>
