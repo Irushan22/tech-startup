@@ -1,0 +1,81 @@
+SKYLIS TEMPLATE — COMMERCIAL LICENSE AGREEMENT
+
+Copyright (c) 2026. All rights reserved.
+
+This License governs the use of the "SKYLIS" website template (the "Template"),
+including all source code, design files, configuration, and accompanying
+documentation contained in this repository.
+
+1. GRANT OF LICENSE
+
+   Upon purchase, the buyer ("Licensee") is granted a non-exclusive,
+   non-transferable, perpetual license to use the Template, subject to the
+   terms below.
+
+2. PERMITTED USES (per single end-product license)
+
+   Licensee MAY:
+   (a) Use the Template to build ONE (1) end product (a website or web
+       application) for Licensee's own use OR for ONE (1) client of the
+       Licensee.
+   (b) Modify, adapt, and customize the Template's source code, design,
+       and content for that end product.
+   (c) Charge end users (visitors of the end product) for access to the
+       end product, where the end product provides substantial functionality
+       beyond the Template itself.
+
+3. PROHIBITED USES
+
+   Licensee MAY NOT:
+   (a) Redistribute, resell, sublicense, lease, rent, or transfer the
+       Template, in whole or in part, in its original or modified form,
+       as a standalone product or template.
+   (b) Make the Template (or substantial portions of it) publicly available
+       in a way that allows third parties to download, fork, or reuse it
+       as a template — including, but not limited to, public GitHub
+       repositories, marketplaces, gallery sites, or template directories.
+   (c) Use the Template to create derivative templates intended for resale
+       or free distribution.
+   (d) Use the Template for more than one end product under a single
+       license. Additional end products require additional licenses.
+
+4. EXTENDED / MULTI-USE LICENSE
+
+   If Licensee wishes to use the Template for multiple end products, or to
+   create a SaaS product where each subscriber receives a copy of the
+   Template, an Extended License must be purchased separately. Contact the
+   author for terms.
+
+5. NO WARRANTY
+
+   THE TEMPLATE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+   OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT.
+   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+   CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+   TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+   TEMPLATE OR THE USE OR OTHER DEALINGS IN THE TEMPLATE.
+
+6. THIRD-PARTY ASSETS
+
+   This Template uses third-party libraries (Next.js, React, Tailwind CSS,
+   Swiper, etc.), each of which is distributed under its own license. The
+   sample images included or referenced by this Template (e.g. Unsplash
+   URLs) are governed by the licenses of their respective providers and
+   are NOT covered by this License. Licensee is responsible for obtaining
+   appropriate rights for any media used in their end product.
+
+7. TERMINATION
+
+   This License terminates automatically if Licensee fails to comply with
+   any of its terms. Upon termination, Licensee must cease all use of the
+   Template and destroy all copies in their possession.
+
+8. ENTIRE AGREEMENT
+
+   This License constitutes the entire agreement between the parties with
+   respect to the use of the Template and supersedes all prior or
+   contemporaneous understandings.
+
+For licensing inquiries beyond a single end-product license, please contact
+the author.

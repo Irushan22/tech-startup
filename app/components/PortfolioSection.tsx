@@ -3,56 +3,16 @@
 import { useState } from "react";
 
 import Image from "next/image";
+import {
+  projects,
+  portfolioFilters,
+  portfolioEyebrow,
+  portfolioHeadlinePrefix,
+  portfolioHeadlineHighlight,
+} from "../config/siteData";
 
 export default function PortfolioSection() {
   const [activeFilter, setActiveFilter] = useState("All");
-
-  const filters = ["All", "Marketing", "Branding", "Development", "SEO"];
-
-  const projects = [
-    {
-      title: "FinTech App Launch",
-      category: "Marketing",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-      stats: "+240%",
-      statsLabel: "User Acquisition",
-    },
-    {
-      title: "EcoBrand Identity",
-      category: "Branding",
-      image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80",
-      stats: "1st",
-      statsLabel: "Award-Winning",
-    },
-    {
-      title: "Global E-Com Scaling",
-      category: "SEO",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
-      stats: "$4M+",
-      statsLabel: "Organic Revenue",
-    },
-    {
-      title: "SaaS Platform Redesign",
-      category: "Development",
-      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80",
-      stats: "-40%",
-      statsLabel: "Bounce Rate",
-    },
-    {
-      title: "Luxury Fashion Campaign",
-      category: "Marketing",
-      image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80",
-      stats: "3x",
-      statsLabel: "ROAS Growth",
-    },
-    {
-      title: "HealthTech Portal",
-      category: "Development",
-      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80",
-      stats: "+180%",
-      statsLabel: "Engagement",
-    },
-  ];
 
   const filteredProjects = activeFilter === "All"
     ? projects
@@ -74,20 +34,20 @@ export default function PortfolioSection() {
             <div className="mb-3 flex items-center gap-4">
               <span className="h-0.5 w-12" style={{ background: "#2a5a8c" }} />
               <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "#2a5a8c" }}>
-                Our Work
+                {portfolioEyebrow}
               </span>
             </div>
             <h2
               className="text-3xl font-extrabold leading-tight sm:text-4xl"
               style={{ color: "#0f1f2e", fontFamily: "var(--font-montserrat), sans-serif" }}
             >
-              Case Studies that <span style={{ color: "#1a3a5c" }}>Prove the Process</span>
+              {portfolioHeadlinePrefix}<span style={{ color: "#1a3a5c" }}>{portfolioHeadlineHighlight}</span>
             </h2>
           </div>
 
           {/* Filter Tabs */}
           <div className="flex flex-wrap items-center gap-2 mt-6 md:mt-0">
-            {filters.map((f) => (
+            {portfolioFilters.map((f) => (
               <button
                 key={f}
                 onClick={() => setActiveFilter(f)}
@@ -105,7 +65,7 @@ export default function PortfolioSection() {
 
         {/* Portfolio Grid – 3 cols, no gaps */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-[220px]">
-          {filteredProjects.map((project, i) => (
+          {filteredProjects.map((project) => (
             <div
               key={project.title}
               className="group relative overflow-hidden cursor-pointer transition-all duration-500"

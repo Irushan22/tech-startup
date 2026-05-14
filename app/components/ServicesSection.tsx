@@ -1,122 +1,21 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-
-type Service = {
-  title: string;
-  desc: string;
-  icon: React.JSX.Element;
-  num: string;
-  details: string[];
-};
+import {
+  services,
+  servicesEyebrow,
+  servicesHeadlineLine1,
+  servicesHeadlineHighlight,
+  type Service,
+} from "../config/siteData";
 
 export default function ServicesSection() {
   const [selectedService, setSelectedService] = useState<Service | null>(null);
-
-  const services: Service[] = [
-    {
-      title: "Search Engine Optimization",
-      desc: "Data-backed SEO strategies to dominate search results and drive high-intent organic traffic to your brand.",
-      icon: (
-        <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M10 10v4m0 0l-2-2m2 2l2-2" />
-        </svg>
-      ),
-      num: "01",
-      details: [
-        "Comprehensive Technical SEO Audits",
-        "High-intent Keyword Strategy & Mapping",
-        "Authoritative Link Building Campaigns",
-        "Local SEO & Google Business Optimization"
-      ]
-    },
-    {
-      title: "Performance Marketing",
-      desc: "Hyper-targeted paid media campaigns across Google, Meta, and LinkedIn designed for maximum ROI and low CPA.",
-      icon: (
-        <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-        </svg>
-      ),
-      num: "02",
-      details: [
-        "Google Search & Shopping Ads Management",
-        "Social Media Advertising (Meta, TikTok, LinkedIn)",
-        "Advanced Retargeting & Lookalike Audiences",
-        "A/B Ad Creative & Copy Testing"
-      ]
-    },
-    {
-      title: "Brand Strategy & Identity",
-      desc: "Comprehensive brand positioning, visual identity design, and messaging frameworks that resonate with your audience.",
-      icon: (
-        <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-        </svg>
-      ),
-      num: "03",
-      details: [
-        "Brand Archetype & Voice Development",
-        "Logo Design & Visual Asset Creation",
-        "Comprehensive Brand Guidelines",
-        "Market Positioning Strategy"
-      ]
-    },
-    {
-      title: "Web Development",
-      desc: "High-performance, beautifully designed, and conversion-optimized websites built on modern tech stacks.",
-      icon: (
-        <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-        </svg>
-      ),
-      num: "04",
-      details: [
-        "Custom Frontend Engineering (React/Next.js)",
-        "E-Commerce Solutions (Shopify/WooCommerce)",
-        "CMS Architecture & Migration (WordPress/Webflow)",
-        "Technical Performance & Speed Optimization"
-      ]
-    },
-    {
-      title: "Content Marketing",
-      desc: "Engaging, authoritative content that builds trust, nurtures leads, and establishes your brand as an industry leader.",
-      icon: (
-        <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-        </svg>
-      ),
-      num: "05",
-      details: [
-        "Editorial Calendar & Content Strategy",
-        "Long-form SEO Articles & Blog Posts",
-        "Whitepapers, E-Books & Case Studies",
-        "Email Newsletters & Nurture Sequences"
-      ]
-    },
-    {
-      title: "Conversion Optimization",
-      desc: "A/B testing and UX refinements to minimize friction and maximize the percentage of visitors who convert.",
-      icon: (
-        <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
-        </svg>
-      ),
-      num: "06",
-      details: [
-        "Heatmap & User Session Analysis",
-        "Multivariate Landing Page Testing",
-        "Checkout Funnel Streamlining",
-        "Conversion Copywriting Refinements"
-      ]
-    },
-  ];
 
   return (
     <section
@@ -134,7 +33,7 @@ export default function ServicesSection() {
             <div className="mb-3 flex items-center gap-4">
               <span className="h-0.5 w-12" style={{ background: "#2a5a8c" }} />
               <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "#2a5a8c" }}>
-                Our Capabilities
+                {servicesEyebrow}
               </span>
             </div>
 
@@ -142,7 +41,7 @@ export default function ServicesSection() {
               className="text-3xl font-extrabold leading-tight sm:text-4xl"
               style={{ color: "#0f1f2e", fontFamily: "var(--font-montserrat), sans-serif" }}
             >
-              End-to-End Solutions for <span style={{ color: "#1a3a5c" }}>Digital Dominance</span>
+              {servicesHeadlineLine1}<span style={{ color: "#1a3a5c" }}>{servicesHeadlineHighlight}</span>
             </h2>
           </div>
 
@@ -254,9 +153,9 @@ export default function ServicesSection() {
           style={{ background: "rgba(15, 31, 46, 0.8)", backdropFilter: "blur(8px)" }}
         >
           {/* Modal Container */}
-          <div 
-            className="relative w-full max-w-2xl overflow-hidden bg-white shadow-2xl animate-fade-in-up"
-            onClick={(e) => e.stopPropagation()} 
+          <div
+            className="relative w-full max-w-2xl overflow-hidden bg-white shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
             style={{ animation: "fade-in-up 0.3s ease-out forwards" }}
           >
             {/* Modal Header */}
@@ -318,15 +217,10 @@ export default function ServicesSection() {
         </div>
       )}
 
-      {/* Custom Styles for Swiper & Animation */}
+      {/* Component-scoped Swiper tweak */}
       <style jsx global>{`
         #services .swiper-wrapper {
           padding-bottom: 8px;
-        }
-
-        @keyframes fade-in-up {
-          from { opacity: 0; transform: translateY(20px) scale(0.98); }
-          to { opacity: 1; transform: translateY(0) scale(1); }
         }
       `}</style>
     </section>

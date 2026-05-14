@@ -1,31 +1,13 @@
 "use client";
 
-export default function FooterSection() {
-  const footerLinks = {
-    services: [
-      { label: "SEO Strategy", href: "#" },
-      { label: "Performance Marketing", href: "#" },
-      { label: "Brand Identity", href: "#" },
-      { label: "Web Development", href: "#" },
-      { label: "Content Marketing", href: "#" },
-      { label: "Conversion Optimization", href: "#" },
-    ],
-    company: [
-      { label: "About Us", href: "#about" },
-      { label: "Our Work", href: "#portfolio" },
-      { label: "Careers", href: "#" },
-      { label: "Blog", href: "#" },
-      { label: "Contact", href: "#contact" },
-    ],
-    resources: [
-      { label: "Case Studies", href: "#portfolio" },
-      { label: "Free Audit", href: "#" },
-      { label: "ROI Calculator", href: "#" },
-      { label: "Privacy Policy", href: "#" },
-      { label: "Terms of Service", href: "#" },
-    ],
-  };
+import {
+  brand,
+  social,
+  footerLinks,
+  footerBottomLinks,
+} from "../config/siteData";
 
+export default function FooterSection() {
   return (
     <footer
       className="relative overflow-hidden pt-20 pb-8"
@@ -49,17 +31,18 @@ export default function FooterSection() {
               className="text-2xl font-extrabold text-white mb-4"
               style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
             >
-              SKY<span className="text-white/40">LIS</span>
+              {brand.logoSplit.strong}<span className="text-white/40">{brand.logoSplit.muted}</span>
             </h3>
             <p className="text-sm leading-relaxed text-white/40 max-w-sm mb-8">
-              A full-service digital marketing agency engineering data-driven growth for ambitious brands worldwide.
+              {brand.tagline}
             </p>
 
             {/* Social Icons */}
             <div className="flex items-center gap-3">
               {/* LinkedIn */}
               <a
-                href="#"
+                href={social.linkedin}
+                aria-label="LinkedIn"
                 className="flex h-10 w-10 items-center justify-center bg-white/5 text-white/40 hover:bg-[#1a3a5c] hover:text-white transition-all duration-300"
                 style={{ clipPath: "polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px)" }}
               >
@@ -69,7 +52,8 @@ export default function FooterSection() {
               </a>
               {/* X / Twitter */}
               <a
-                href="#"
+                href={social.twitter}
+                aria-label="Twitter"
                 className="flex h-10 w-10 items-center justify-center bg-white/5 text-white/40 hover:bg-[#1a3a5c] hover:text-white transition-all duration-300"
                 style={{ clipPath: "polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px)" }}
               >
@@ -79,7 +63,8 @@ export default function FooterSection() {
               </a>
               {/* Instagram */}
               <a
-                href="#"
+                href={social.instagram}
+                aria-label="Instagram"
                 className="flex h-10 w-10 items-center justify-center bg-white/5 text-white/40 hover:bg-[#1a3a5c] hover:text-white transition-all duration-300"
                 style={{ clipPath: "polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px)" }}
               >
@@ -89,7 +74,8 @@ export default function FooterSection() {
               </a>
               {/* Dribbble */}
               <a
-                href="#"
+                href={social.dribbble}
+                aria-label="Dribbble"
                 className="flex h-10 w-10 items-center justify-center bg-white/5 text-white/40 hover:bg-[#1a3a5c] hover:text-white transition-all duration-300"
                 style={{ clipPath: "polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px)" }}
               >
@@ -161,18 +147,14 @@ export default function FooterSection() {
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-xs text-white/25">
-            © {new Date().getFullYear()} SKYLIS. All rights reserved.
+            © {new Date().getFullYear()} {brand.name}. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            <a href="#" className="text-xs text-white/25 hover:text-white/50 transition-colors duration-200">
-              Privacy Policy
-            </a>
-            <a href="#" className="text-xs text-white/25 hover:text-white/50 transition-colors duration-200">
-              Terms
-            </a>
-            <a href="#" className="text-xs text-white/25 hover:text-white/50 transition-colors duration-200">
-              Cookies
-            </a>
+            {footerBottomLinks.map((link) => (
+              <a key={link.label} href={link.href} className="text-xs text-white/25 hover:text-white/50 transition-colors duration-200">
+                {link.label}
+              </a>
+            ))}
           </div>
         </div>
       </div>

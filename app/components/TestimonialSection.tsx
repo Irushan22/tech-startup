@@ -6,40 +6,14 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import {
+  testimonials,
+  testimonialsEyebrow,
+  testimonialsHeadlinePrefix,
+  testimonialsHeadlineHighlight,
+} from "../config/siteData";
 
 export default function TestimonialSection() {
-  const testimonials = [
-    {
-      quote: "SKYLIS didn't just rebuild our website; they re-engineered our entire digital acquisition channel. We saw a 300% increase in qualified leads within the first quarter.",
-      author: "Sarah Jenkins",
-      role: "CMO, FinTech Innovators",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&q=80",
-    },
-    {
-      quote: "The level of strategic depth and technical execution is unmatched. Their SEO and content framework directly contributed to our $4M organic revenue run rate.",
-      author: "Marcus Chen",
-      role: "Founder, EcoBrand Global",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&q=80",
-    },
-    {
-      quote: "A true extension of our internal team. They took the time to understand our complex SaaS product and translated it into messaging that actually converts.",
-      author: "Elena Rodriguez",
-      role: "VP Marketing, Nova Software",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&q=80",
-    },
-    {
-      quote: "Their data-driven approach helped us reduce our CPA by 60% while tripling our conversion rate. The ROI speaks for itself.",
-      author: "David Park",
-      role: "Head of Growth, CloudSync",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80",
-    },
-    {
-      quote: "From brand refresh to performance marketing, SKYLIS delivered end-to-end with precision. Our pipeline has never looked healthier.",
-      author: "Amira Hassan",
-      role: "CEO, NexaHealth",
-      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&q=80",
-    },
-  ];
 
   return (
     <section
@@ -56,7 +30,7 @@ export default function TestimonialSection() {
           <div className="mb-3 flex items-center justify-center gap-4">
             <span className="h-0.5 w-12" style={{ background: "#2a5a8c" }} />
             <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "#2a5a8c" }}>
-              Client Success
+              {testimonialsEyebrow}
             </span>
             <span className="h-0.5 w-12" style={{ background: "#2a5a8c" }} />
           </div>
@@ -65,7 +39,7 @@ export default function TestimonialSection() {
             className="text-3xl font-extrabold leading-tight sm:text-4xl"
             style={{ color: "#0f1f2e", fontFamily: "var(--font-montserrat), sans-serif" }}
           >
-            Don't Just Take Our <span style={{ color: "#1a3a5c" }}>Word For It</span>
+            {testimonialsHeadlinePrefix}<span style={{ color: "#1a3a5c" }}>{testimonialsHeadlineHighlight}</span>
           </h2>
         </div>
 

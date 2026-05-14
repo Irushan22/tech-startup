@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import { hero } from "../config/siteData";
 
 function AnimatedCounter({ end, duration = 2000, suffix = "" }: { end: number, duration?: number, suffix?: string }) {
   const [count, setCount] = useState(0);
@@ -60,7 +61,7 @@ export default function HeroSection() {
               className="font-extrabold leading-[1.05] tracking-tight text-5xl sm:text-6xl md:text-7xl lg:text-[4rem]"
               style={{ color: "#0f1f2e" }}
             >
-              Elevate Your
+              {hero.headlineLine1}
               <br />
               <span
                 style={{
@@ -69,10 +70,10 @@ export default function HeroSection() {
                   WebkitTextFillColor: "transparent",
                 }}
               >
-                Brand
+                {hero.headlineHighlight}
               </span>
               <br />
-              Presence
+              {hero.headlineLine3}
             </h1>
 
             {/* Subtitle */}
@@ -80,15 +81,13 @@ export default function HeroSection() {
               className="mt-8 text-lg leading-relaxed sm:text-md"
               style={{ color: "#4a5e72" }}
             >
-              We craft data-driven digital marketing strategies that amplify your
-              brand, engage audiences, and drive measurable growth for your
-              business.
+              {hero.subtitle}
             </p>
 
             {/* CTA Buttons */}
             <div className="mt-10 flex flex-col items-start gap-4 sm:flex-row">
             <a
-              href="#contact"
+              href={hero.primaryCta.href}
               className="inline-flex items-center justify-center gap-2 px-8 py-3 text-sm font-bold transition-all duration-300 hover:-translate-y-0.5"
               style={{
                 background: "#1a3a5c",
@@ -97,7 +96,7 @@ export default function HeroSection() {
                 boxShadow: "0 4px 20px rgba(26,58,92,0.3)",
               }}
             >
-              Start Your Campaign
+              {hero.primaryCta.label}
               <svg
                 className="h-4 w-4"
                 fill="none"
@@ -113,7 +112,7 @@ export default function HeroSection() {
               </svg>
             </a>
             <a
-              href="#portfolio"
+              href={hero.secondaryCta.href}
               className="inline-flex items-center justify-center px-8 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1a3a5c]/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1a3a5c] focus-visible:ring-offset-2"
               style={{
                 background: "transparent",
@@ -122,7 +121,7 @@ export default function HeroSection() {
                 clipPath: "polygon(12px 0, 100% 0, calc(100% - 12px) 100%, 0 100%)",
               }}
             >
-              View Our Work
+              {hero.secondaryCta.label}
             </a>
           </div>
           </div>
@@ -137,8 +136,8 @@ export default function HeroSection() {
         >
           {/* Main image optimized with next/image */}
           <Image
-            src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1600&q=80"
-            alt="Marketing team collaborating on strategy"
+            src={hero.image}
+            alt={hero.imageAlt}
             fill
             className="object-cover"
             priority /* load hero images immediately */
@@ -159,26 +158,19 @@ export default function HeroSection() {
               borderTop: "1px solid rgba(255,255,255,0.1)",
             }}
           >
-            <div className="flex flex-col items-center">
-              <span className="text-3xl font-extrabold text-white">
-                <AnimatedCounter end={450} suffix="+" />
-              </span>
-              <span className="text-xs uppercase tracking-wider mt-1 font-semibold" style={{ color: "rgba(255,255,255,0.7)" }}>Projects Delivered</span>
-            </div>
-            <div className="h-10 w-px" style={{ background: "rgba(255,255,255,0.15)" }} />
-            <div className="flex flex-col items-center">
-              <span className="text-3xl font-extrabold text-white">
-                <AnimatedCounter end={98} suffix="%" />
-              </span>
-              <span className="text-xs uppercase tracking-wider mt-1 font-semibold" style={{ color: "rgba(255,255,255,0.7)" }}>Success Rate</span>
-            </div>
-            <div className="h-10 w-px" style={{ background: "rgba(255,255,255,0.15)" }} />
-            <div className="flex flex-col items-center">
-              <span className="text-3xl font-extrabold text-white">
-                <AnimatedCounter end={12} suffix="M+" />
-              </span>
-              <span className="text-xs uppercase tracking-wider mt-1 font-semibold" style={{ color: "rgba(255,255,255,0.7)" }}>Revenue Generated</span>
-            </div>
+            {hero.stats.map((stat, i) => (
+              <div key={stat.label} className="flex items-center">
+                <div className="flex flex-col items-center">
+                  <span className="text-3xl font-extrabold text-white">
+                    <AnimatedCounter end={stat.value} suffix={stat.suffix} />
+                  </span>
+                  <span className="text-xs uppercase tracking-wider mt-1 font-semibold" style={{ color: "rgba(255,255,255,0.7)" }}>{stat.label}</span>
+                </div>
+                {i < hero.stats.length - 1 && (
+                  <div className="h-10 w-px ml-8 mr-8" style={{ background: "rgba(255,255,255,0.15)" }} />
+                )}
+              </div>
+            ))}
           </div>
 
 
