@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 import Image from "next/image";
+import Link from "next/link";
 import {
   projects,
   portfolioFilters,
@@ -66,9 +67,10 @@ export default function PortfolioSection() {
         {/* Portfolio Grid – 3 cols, no gaps */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-[220px]">
           {filteredProjects.map((project) => (
-            <div
-              key={project.title}
-              className="group relative overflow-hidden cursor-pointer transition-all duration-500"
+            <Link
+              key={project.slug}
+              href={`/case-studies/${project.slug}`}
+              className="group relative overflow-hidden cursor-pointer transition-all duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-navy focus-visible:ring-offset-2"
             >
               {/* Image */}
               <Image
@@ -128,7 +130,7 @@ export default function PortfolioSection() {
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

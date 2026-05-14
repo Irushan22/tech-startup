@@ -77,7 +77,7 @@ The file is organized into sections matching the landing-page sections:
 | `hero` | Headline, subtitle, CTAs, image, animated stats |
 | `about` | About-us copy + the six "values" grid |
 | `services` | Six service cards (title, description, SVG icon, details list) |
-| `projects` | Portfolio grid items + filter categories |
+| `projects` | Portfolio grid items **AND** full case study pages (auto-generated at `/case-studies/[slug]`) |
 | `testimonials` | Client quote carousel |
 | `contactSection` | Headline, eyebrow, description of contact section |
 | `footerLinks` / `footerBottomLinks` | Footer columns + legal links |
@@ -161,7 +161,46 @@ Drop your own logo in `public/logo.png` (or change the path in `brand.logoSrc` i
 
 ### 6. Replace images
 
-Hero image, portfolio thumbnails, testimonial avatars — all defined as URLs in `siteData.tsx`. They currently point to Unsplash; swap with your own CDN-hosted images or move them into `public/`.
+Hero image, portfolio thumbnails, case-study galleries, testimonial avatars — all defined as URLs in [app/config/siteData.tsx](app/config/siteData.tsx). They currently point to Unsplash as placeholders.
+
+> ⚠️ **Strongly recommended: move images into `/public` before going live.**
+>
+> Unsplash is a third-party CDN and occasionally rate-limits or slows down. Next.js's image optimizer has a hard ~7-second upstream-fetch timeout, so a slow Unsplash response causes a `500` on `/_next/image?...` and broken images on the page. You may see this in `npm run dev` as:
+> ```
+> Error [TimeoutError]: The operation was aborted due to timeout
+> upstream image response timed out for https://images.unsplash.com/...
+> ```
+> This is a network problem, **not a code bug**. The template ships with `images.minimumCacheTTL: 31536000` in [next.config.ts](next.config.ts), so once an image fetches successfully it's cached for a year. Just refresh the page once and the cache fills.
+
+**Production fix:**
+
+1. Download each replacement image into `public/` (e.g. `public/case-studies/fintech-hero.jpg`).
+2. In `siteData.tsx`, replace the Unsplash URL with the local path: `"/case-studies/fintech-hero.jpg"`.
+3. Local paths skip the network entirely — no proxy, no timeouts, faster LCP, no third-party dependency.
+
+You can keep the `remotePatterns` block in `next.config.ts` if you also use a CDN like Cloudinary or your own S3 bucket — just add that hostname to the list.
+
+### 7. Edit / add case study pages
+
+Every project in the `projects` array of `siteData.tsx` automatically generates:
+
+1. A clickable card in the portfolio grid on the home page
+2. A dedicated case study page at `/case-studies/<slug>`
+
+Each project has these fields (all live in one object):
+
+| Field | Drives |
+| --- | --- |
+| `slug` | The URL (e.g. `"fintech-app-launch"` → `/case-studies/fintech-app-launch`) |
+| `title`, `category`, `image`, `stats`, `statsLabel` | Portfolio card |
+| `tagline`, `client`, `industry`, `timeline`, `year`, `services` | Case study hero + meta bar |
+| `challenge`, `approach` | Two-column narrative section (use `\n\n` between paragraphs) |
+| `results` | 3-up metric grid (each item has `value`, `label`, optional `description`) |
+| `gallery` | Image grid below results (2–3 images recommended) |
+
+**To add a case study:** copy any existing project object in `projects`, change the `slug` (must be unique, lowercase, kebab-case) and content. The new page is live immediately — no routing setup, no extra files. The prev/next navigation at the bottom of each case study cycles through them automatically.
+
+**To remove a case study:** delete the object from the `projects` array.
 
 ---
 
@@ -179,10 +218,12 @@ app/
 │   ├── ContactSection.tsx
 │   └── FooterSection.tsx
 ├── config/
-│   └── siteData.tsx     # ★ EDIT THIS FILE TO CUSTOMIZE
+│   └── siteData.tsx              # ★ EDIT THIS FILE TO CUSTOMIZE
+├── case-studies/
+│   └── [slug]/page.tsx           # auto-generated per project in siteData
 ├── privacy/page.tsx
 ├── terms/page.tsx
-├── not-found.tsx        # 404 page
+├── not-found.tsx                 # 404 page
 ├── globals.css
 ├── layout.tsx
 └── page.tsx
