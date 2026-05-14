@@ -28,18 +28,18 @@ export default function TestimonialSection() {
         {/* Top: Centered Header */}
         <div className="text-center mb-16">
           <div className="mb-3 flex items-center justify-center gap-4">
-            <span className="h-0.5 w-12" style={{ background: "#2a5a8c" }} />
-            <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "#2a5a8c" }}>
+            <span className="h-0.5 w-12" style={{ background: "var(--brand-blue)" }} />
+            <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--brand-blue)" }}>
               {testimonialsEyebrow}
             </span>
-            <span className="h-0.5 w-12" style={{ background: "#2a5a8c" }} />
+            <span className="h-0.5 w-12" style={{ background: "var(--brand-blue)" }} />
           </div>
 
           <h2
             className="text-3xl font-extrabold leading-tight sm:text-4xl"
-            style={{ color: "#0f1f2e", fontFamily: "var(--font-montserrat), sans-serif" }}
+            style={{ color: "var(--brand-navy-dark)", fontFamily: "var(--font-montserrat), sans-serif" }}
           >
-            {testimonialsHeadlinePrefix}<span style={{ color: "#1a3a5c" }}>{testimonialsHeadlineHighlight}</span>
+            {testimonialsHeadlinePrefix}<span style={{ color: "var(--brand-navy)" }}>{testimonialsHeadlineHighlight}</span>
           </h2>
         </div>
 
@@ -76,13 +76,13 @@ export default function TestimonialSection() {
                   <div
                     className={`relative p-8 lg:p-10 transition-all duration-500 ${
                       isActive 
-                        ? "bg-[#1a3a5c] scale-100 shadow-2xl" 
-                        : "bg-[#f8fafc] scale-95 opacity-70"
+                        ? "bg-brand-navy scale-100 shadow-2xl" 
+                        : "bg-surface-soft scale-95 opacity-70"
                     }`}
                   >
                     {/* Quote Mark */}
                     <div className={`absolute top-6 right-8 ${isActive ? "opacity-10" : "opacity-[0.04]"}`}>
-                      <svg className={`h-14 w-14 ${isActive ? "text-white" : "text-[#1a3a5c]"}`} fill="currentColor" viewBox="0 0 24 24">
+                      <svg className={`h-14 w-14 ${isActive ? "text-white" : "text-brand-navy"}`} fill="currentColor" viewBox="0 0 24 24">
                         <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                       </svg>
                     </div>
@@ -98,7 +98,7 @@ export default function TestimonialSection() {
 
                     {/* Quote Text */}
                     <p className={`text-base leading-relaxed font-medium mb-8 ${
-                      isActive ? "text-white/90" : "text-[#4a5e72]"
+                      isActive ? "text-white/90" : "text-text-secondary"
                     }`}>
                       &ldquo;{testimonial.quote}&rdquo;
                     </p>
@@ -115,13 +115,13 @@ export default function TestimonialSection() {
                       </div>
                       <div>
                         <h4
-                          className={`text-sm font-bold ${isActive ? "text-white" : "text-[#0f1f2e]"}`}
+                          className={`text-sm font-bold ${isActive ? "text-white" : "text-brand-navy-dark"}`}
                           style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                         >
                           {testimonial.author}
                         </h4>
                         <p className={`text-[10px] font-bold uppercase tracking-wider mt-0.5 ${
-                          isActive ? "text-white/50" : "text-[#2a5a8c]"
+                          isActive ? "text-white/50" : "text-brand-blue"
                         }`}>
                           {testimonial.role}
                         </p>
@@ -135,7 +135,7 @@ export default function TestimonialSection() {
 
           {/* Bottom Controls: Arrows + Pagination dots centered */}
           <div className="flex items-center justify-center gap-6 mt-12">
-            <button className="testi-prev flex h-11 w-11 items-center justify-center border border-[#1a3a5c]/20 text-[#1a3a5c] hover:bg-[#1a3a5c] hover:text-white transition-all duration-300 cursor-pointer">
+            <button className="testi-prev flex h-11 w-11 items-center justify-center border border-brand-navy/20 text-brand-navy hover:bg-brand-navy hover:text-white transition-all duration-300 cursor-pointer">
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
               </svg>
@@ -144,7 +144,7 @@ export default function TestimonialSection() {
             {/* Pagination Dots */}
             <div className="testi-pagination flex items-center gap-2" />
 
-            <button className="testi-next flex h-11 w-11 items-center justify-center border border-[#1a3a5c]/20 text-[#1a3a5c] hover:bg-[#1a3a5c] hover:text-white transition-all duration-300 cursor-pointer">
+            <button className="testi-next flex h-11 w-11 items-center justify-center border border-brand-navy/20 text-brand-navy hover:bg-brand-navy hover:text-white transition-all duration-300 cursor-pointer">
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>
@@ -161,7 +161,7 @@ export default function TestimonialSection() {
           display: inline-block;
           width: 8px;
           height: 8px;
-          background: #1a3a5c;
+          background: var(--brand-navy);
           opacity: 0.2;
           cursor: pointer;
           transition: all 0.3s;

@@ -21,7 +21,7 @@ export default function PortfolioSection() {
   return (
     <section
       id="portfolio"
-      className="relative bg-[#f8fafc] overflow-hidden py-20"
+      className="relative bg-surface-soft overflow-hidden py-20"
       style={{
         fontFamily: "var(--font-raleway), sans-serif",
       }}
@@ -32,16 +32,16 @@ export default function PortfolioSection() {
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-14">
           <div>
             <div className="mb-3 flex items-center gap-4">
-              <span className="h-0.5 w-12" style={{ background: "#2a5a8c" }} />
-              <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "#2a5a8c" }}>
+              <span className="h-0.5 w-12" style={{ background: "var(--brand-blue)" }} />
+              <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--brand-blue)" }}>
                 {portfolioEyebrow}
               </span>
             </div>
             <h2
               className="text-3xl font-extrabold leading-tight sm:text-4xl"
-              style={{ color: "#0f1f2e", fontFamily: "var(--font-montserrat), sans-serif" }}
+              style={{ color: "var(--brand-navy-dark)", fontFamily: "var(--font-montserrat), sans-serif" }}
             >
-              {portfolioHeadlinePrefix}<span style={{ color: "#1a3a5c" }}>{portfolioHeadlineHighlight}</span>
+              {portfolioHeadlinePrefix}<span style={{ color: "var(--brand-navy)" }}>{portfolioHeadlineHighlight}</span>
             </h2>
           </div>
 
@@ -53,8 +53,8 @@ export default function PortfolioSection() {
                 onClick={() => setActiveFilter(f)}
                 className={`px-4 py-2 text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
                   activeFilter === f
-                    ? "bg-[#1a3a5c] text-white"
-                    : "bg-transparent text-[#1a3a5c]/60 hover:text-[#1a3a5c] border border-[#1a3a5c]/15 hover:border-[#1a3a5c]/40"
+                    ? "bg-brand-navy text-white"
+                    : "bg-transparent text-brand-navy/60 hover:text-brand-navy border border-brand-navy/15 hover:border-brand-navy/40"
                 }`}
               >
                 {f}
@@ -121,7 +121,7 @@ export default function PortfolioSection() {
                   </div>
 
                   {/* Arrow */}
-                  <div className="flex h-9 w-9 items-center justify-center bg-white text-[#1a3a5c]">
+                  <div className="flex h-9 w-9 items-center justify-center bg-white text-brand-navy">
                     <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
                     </svg>
@@ -136,10 +136,14 @@ export default function PortfolioSection() {
         <div className="mt-16 flex justify-center">
           <a
             href="#portfolio"
-            className="inline-flex items-center justify-center gap-2 bg-[#1a3a5c] px-8 py-4 text-sm font-bold tracking-wider text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#0f1f2e] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1a3a5c] focus-visible:ring-offset-2"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 text-sm font-bold tracking-wider transition-all duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-navy focus-visible:ring-offset-2"
             style={{
+              background: "var(--btn-primary-bg)",
+              color: "var(--btn-primary-text)",
               clipPath: "polygon(12px 0, 100% 0, calc(100% - 12px) 100%, 0 100%)",
             }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = "var(--btn-primary-bg-hover)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = "var(--btn-primary-bg)"; }}
           >
             VIEW ALL PROJECTS
             <svg

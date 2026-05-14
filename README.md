@@ -99,19 +99,61 @@ pre-filled. No backend, no API keys, no email service to wire up.
 
 ### 3. Change brand colors
 
-The site uses a navy palette (`#1a3a5c`) as the primary brand color. Tokens are defined as CSS variables in:
+**Every color in the template is controlled from one file:** [app/globals.css](app/globals.css). Open the `:root` block and edit any value.
 
+```css
+:root {
+  /* Brand colors */
+  --brand-navy: #1a3a5c;        /* primary brand color */
+  --brand-navy-dark: #0f1f2e;   /* headings, deepest shade */
+  --brand-blue: #2a5a8c;        /* accent / eyebrow */
+  --brand-blue-light: #2a6aac;  /* hero gradient endpoint */
+
+  /* Surfaces */
+  --surface-soft: #f8fafc;      /* light section background */
+  --surface-footer: #0a1520;    /* dark footer background */
+
+  /* Text */
+  --text-primary: #0f1f2e;
+  --text-secondary: #4a5e72;
+  --text-muted: #4a5568;
+  --text-nav-inactive: #3a4a5c;
+}
 ```
-app/globals.css
+
+Change `--brand-navy` to your hex of choice and the entire site updates — buttons, links, accents, gradients, focus rings, scrollbar.
+
+### 3.1 Button color palette
+
+Buttons use a separate group of tokens so you can theme buttons without changing the rest of the brand:
+
+```css
+:root {
+  /* Primary button — solid (Hero "Start Your Campaign", "View All Projects", modal CTAs) */
+  --btn-primary-bg: var(--brand-navy);
+  --btn-primary-bg-hover: var(--brand-navy-dark);
+  --btn-primary-text: #ffffff;
+
+  /* Secondary button — outlined (Hero "View Our Work", 404 "Contact Us") */
+  --btn-secondary-bg: transparent;
+  --btn-secondary-text: var(--brand-navy);
+  --btn-secondary-border: var(--brand-navy);
+
+  /* On-dark CTA — white button on dark backgrounds (Contact section submit) */
+  --btn-on-dark-bg: #ffffff;
+  --btn-on-dark-text: var(--brand-navy);
+
+  /* WhatsApp CTA — available preset if you want the WhatsApp brand green */
+  --btn-whatsapp-bg: #25d366;
+  --btn-whatsapp-text: #ffffff;
+}
 ```
 
-Find the `:root` block and edit `--brand-navy`, `--brand-blue`, etc.
-
-For inline hex values (e.g. `#1a3a5c`), do a find-and-replace across `app/components/`.
+Want a green primary button? Change `--btn-primary-bg` and `--btn-primary-bg-hover` without touching anything else.
 
 ### 4. Replace fonts
 
-Fonts are loaded in [app/layout.tsx](app/layout.tsx) via `next/font/google`. Swap any font there — the rest of the codebase reads from CSS variables `--font-inter`, `--font-raleway`, `--font-jetbrains-mono`.
+Fonts are loaded in [app/layout.tsx](app/layout.tsx) via `next/font/google`. Swap any font there — the rest of the codebase reads from CSS variables `--font-inter` and `--font-raleway`.
 
 ### 5. Replace the logo
 

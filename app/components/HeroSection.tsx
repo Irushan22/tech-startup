@@ -59,13 +59,13 @@ export default function HeroSection() {
             {/* Headline */}
             <h1
               className="font-extrabold leading-[1.05] tracking-tight text-5xl sm:text-6xl md:text-7xl lg:text-[4rem]"
-              style={{ color: "#0f1f2e" }}
+              style={{ color: "var(--brand-navy-dark)" }}
             >
               {hero.headlineLine1}
               <br />
               <span
                 style={{
-                  background: "linear-gradient(135deg, #1a3a5c, #2a6aac)",
+                  background: "linear-gradient(135deg, var(--brand-navy), var(--brand-blue-light))",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                 }}
@@ -79,7 +79,7 @@ export default function HeroSection() {
             {/* Subtitle */}
             <p
               className="mt-8 text-lg leading-relaxed sm:text-md"
-              style={{ color: "#4a5e72" }}
+              style={{ color: "var(--text-secondary)" }}
             >
               {hero.subtitle}
             </p>
@@ -90,8 +90,8 @@ export default function HeroSection() {
               href={hero.primaryCta.href}
               className="inline-flex items-center justify-center gap-2 px-8 py-3 text-sm font-bold transition-all duration-300 hover:-translate-y-0.5"
               style={{
-                background: "#1a3a5c",
-                color: "#ffffff",
+                background: "var(--btn-primary-bg)",
+                color: "var(--btn-primary-text)",
                 clipPath: "polygon(12px 0, 100% 0, calc(100% - 12px) 100%, 0 100%)",
                 boxShadow: "0 4px 20px rgba(26,58,92,0.3)",
               }}
@@ -113,11 +113,11 @@ export default function HeroSection() {
             </a>
             <a
               href={hero.secondaryCta.href}
-              className="inline-flex items-center justify-center px-8 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1a3a5c]/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1a3a5c] focus-visible:ring-offset-2"
+              className="inline-flex items-center justify-center px-8 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-navy/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-navy focus-visible:ring-offset-2"
               style={{
-                background: "transparent",
-                color: "#1a3a5c",
-                border: "2px solid #1a3a5c",
+                background: "var(--btn-secondary-bg)",
+                color: "var(--btn-secondary-text)",
+                border: "2px solid var(--btn-secondary-border)",
                 clipPath: "polygon(12px 0, 100% 0, calc(100% - 12px) 100%, 0 100%)",
               }}
             >
@@ -154,7 +154,7 @@ export default function HeroSection() {
           <div
             className="absolute bottom-0 left-0 right-0 z-20 flex h-28 items-center justify-around pr-8 pl-[8%]"
             style={{
-              background: "#1a3a5c", // theme color
+              background: "var(--brand-navy)", // theme color
               borderTop: "1px solid rgba(255,255,255,0.1)",
             }}
           >

@@ -20,23 +20,23 @@ export default function PrivacyPage() {
       >
         <div className="mx-auto w-full max-w-3xl px-6 lg:px-8">
           <div className="mb-6 flex items-center gap-4">
-            <span className="h-0.5 w-12" style={{ background: "#2a5a8c" }} />
-            <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "#2a5a8c" }}>
+            <span className="h-0.5 w-12" style={{ background: "var(--brand-blue)" }} />
+            <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--brand-blue)" }}>
               Legal
             </span>
           </div>
 
           <h1
             className="text-3xl font-extrabold leading-tight sm:text-4xl"
-            style={{ color: "#0f1f2e", fontFamily: "var(--font-montserrat), sans-serif" }}
+            style={{ color: "var(--brand-navy-dark)", fontFamily: "var(--font-montserrat), sans-serif" }}
           >
             Privacy Policy
           </h1>
-          <p className="mt-3 text-sm text-[#4a5e72]">Last updated: {lastUpdated}</p>
+          <p className="mt-3 text-sm text-text-secondary">Last updated: {lastUpdated}</p>
 
-          <div className="mt-10 space-y-8 text-[#4a5e72] leading-relaxed">
+          <div className="mt-10 space-y-8 text-text-secondary leading-relaxed">
             <section>
-              <h2 className="text-xl font-bold text-[#0f1f2e] mb-3" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
+              <h2 className="text-xl font-bold text-brand-navy-dark mb-3" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
                 1. Introduction
               </h2>
               <p>
@@ -48,7 +48,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className="text-xl font-bold text-[#0f1f2e] mb-3" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
+              <h2 className="text-xl font-bold text-brand-navy-dark mb-3" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
                 2. Information We Collect
               </h2>
               <p>We may collect the following categories of information:</p>
@@ -60,7 +60,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className="text-xl font-bold text-[#0f1f2e] mb-3" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
+              <h2 className="text-xl font-bold text-brand-navy-dark mb-3" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
                 3. How We Use Information
               </h2>
               <ul className="list-disc pl-6 space-y-2">
@@ -71,7 +71,7 @@ export default function PrivacyPage() {
             </section>
 
             <section id="cookies">
-              <h2 className="text-xl font-bold text-[#0f1f2e] mb-3" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
+              <h2 className="text-xl font-bold text-brand-navy-dark mb-3" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
                 4. Cookies
               </h2>
               <p>
@@ -82,7 +82,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className="text-xl font-bold text-[#0f1f2e] mb-3" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
+              <h2 className="text-xl font-bold text-brand-navy-dark mb-3" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
                 5. Third-Party Services
               </h2>
               <p>
@@ -93,7 +93,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className="text-xl font-bold text-[#0f1f2e] mb-3" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
+              <h2 className="text-xl font-bold text-brand-navy-dark mb-3" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
                 6. Your Rights
               </h2>
               <p>
@@ -104,12 +104,12 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className="text-xl font-bold text-[#0f1f2e] mb-3" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
+              <h2 className="text-xl font-bold text-brand-navy-dark mb-3" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
                 7. Contact
               </h2>
               <p>
                 Questions about this policy? Email us at{" "}
-                <a href={`mailto:${contact.email}`} className="text-[#1a3a5c] font-semibold underline">
+                <a href={`mailto:${contact.email}`} className="text-brand-navy font-semibold underline">
                   {contact.email}
                 </a>
                 .

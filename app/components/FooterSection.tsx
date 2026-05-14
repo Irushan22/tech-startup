@@ -12,12 +12,12 @@ export default function FooterSection() {
     <footer
       className="relative overflow-hidden pt-20 pb-8"
       style={{
-        background: "#0a1520",
+        background: "var(--surface-footer)",
         fontFamily: "var(--font-raleway), sans-serif",
       }}
     >
       {/* Accent line at the very top */}
-      <div className="absolute top-0 left-0 right-0 h-1" style={{ background: "linear-gradient(90deg, transparent, #1a3a5c, transparent)" }} />
+      <div className="absolute top-0 left-0 right-0 h-1" style={{ background: "linear-gradient(90deg, transparent, var(--brand-navy), transparent)" }} />
 
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 lg:px-8">
@@ -43,7 +43,7 @@ export default function FooterSection() {
               <a
                 href={social.linkedin}
                 aria-label="LinkedIn"
-                className="flex h-10 w-10 items-center justify-center bg-white/5 text-white/40 hover:bg-[#1a3a5c] hover:text-white transition-all duration-300"
+                className="flex h-10 w-10 items-center justify-center bg-white/5 text-white/40 hover:bg-brand-navy hover:text-white transition-all duration-300"
                 style={{ clipPath: "polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px)" }}
               >
                 <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
@@ -54,7 +54,7 @@ export default function FooterSection() {
               <a
                 href={social.twitter}
                 aria-label="Twitter"
-                className="flex h-10 w-10 items-center justify-center bg-white/5 text-white/40 hover:bg-[#1a3a5c] hover:text-white transition-all duration-300"
+                className="flex h-10 w-10 items-center justify-center bg-white/5 text-white/40 hover:bg-brand-navy hover:text-white transition-all duration-300"
                 style={{ clipPath: "polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px)" }}
               >
                 <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
@@ -65,7 +65,7 @@ export default function FooterSection() {
               <a
                 href={social.instagram}
                 aria-label="Instagram"
-                className="flex h-10 w-10 items-center justify-center bg-white/5 text-white/40 hover:bg-[#1a3a5c] hover:text-white transition-all duration-300"
+                className="flex h-10 w-10 items-center justify-center bg-white/5 text-white/40 hover:bg-brand-navy hover:text-white transition-all duration-300"
                 style={{ clipPath: "polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px)" }}
               >
                 <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
@@ -76,7 +76,7 @@ export default function FooterSection() {
               <a
                 href={social.dribbble}
                 aria-label="Dribbble"
-                className="flex h-10 w-10 items-center justify-center bg-white/5 text-white/40 hover:bg-[#1a3a5c] hover:text-white transition-all duration-300"
+                className="flex h-10 w-10 items-center justify-center bg-white/5 text-white/40 hover:bg-brand-navy hover:text-white transition-all duration-300"
                 style={{ clipPath: "polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px)" }}
               >
                 <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">

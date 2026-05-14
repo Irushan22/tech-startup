@@ -40,7 +40,7 @@ export default function ContactSection() {
       className="relative overflow-hidden py-24 lg:py-32"
       style={{
         background:
-          "linear-gradient(135deg, #0f1f2e 0%, #1a3a5c 50%, #0f1f2e 100%)",
+          "linear-gradient(135deg, var(--brand-navy-dark) 0%, var(--brand-navy) 50%, var(--brand-navy-dark) 100%)",
         fontFamily: "var(--font-raleway), sans-serif",
       }}
     >
@@ -290,10 +290,10 @@ export default function ContactSection() {
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  className="mt-8 relative w-full inline-flex items-center justify-center gap-2 px-8 py-4 text-sm font-bold uppercase tracking-wider transition-all duration-300 hover:opacity-90 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a3a5c]"
+                  className="mt-8 relative w-full inline-flex items-center justify-center gap-2 px-8 py-4 text-sm font-bold uppercase tracking-wider transition-all duration-300 hover:opacity-90 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-navy"
                   style={{
-                    background: "#ffffff",
-                    color: "#1a3a5c",
+                    background: "var(--btn-on-dark-bg)",
+                    color: "var(--btn-on-dark-text)",
                     clipPath:
                       "polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%)",
                   }}

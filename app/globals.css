@@ -1,22 +1,63 @@
 @import "tailwindcss";
 
-/* ========== DESIGN TOKENS ========== */
+/* ==========================================================================
+   COLOR PALETTE — single source of truth
+   Edit any value below to retheme the site. Components read these directly.
+   ========================================================================== */
 :root {
-  --bg-primary: #ffffff;
-
-  --text-primary: #1a2e1a;
-  --text-secondary: #4a6350;
-  --text-muted: #7a9580;
-
+  /* Brand colors */
   --brand-navy: #1a3a5c;
+  --brand-navy-dark: #0f1f2e;
   --brand-blue: #2a5a8c;
+  --brand-blue-light: #2a6aac;
 
-  --border-subtle: rgba(90, 154, 74, 0.12);
+  /* Surfaces */
+  --bg-primary: #ffffff;
+  --surface-soft: #f8fafc;
+  --surface-footer: #0a1520;
+
+  /* Text */
+  --text-primary: #0f1f2e;
+  --text-secondary: #4a5e72;
+  --text-muted: #4a5568;
+  --text-nav-inactive: #3a4a5c;
+
+  /* Borders */
+  --border-subtle: rgba(26, 58, 92, 0.12);
+
+  /* Button palette — primary (Hero CTA, modal CTAs, View All Projects) */
+  --btn-primary-bg: #1a3a5c;
+  --btn-primary-bg-hover: #0f1f2e;
+  --btn-primary-text: #ffffff;
+
+  /* Button palette — secondary outlined (Hero "View Our Work", 404 "Contact Us") */
+  --btn-secondary-bg: transparent;
+  --btn-secondary-text: #1a3a5c;
+  --btn-secondary-border: #1a3a5c;
+
+  /* Button palette — on-dark CTA (Contact section submit, white-on-navy) */
+  --btn-on-dark-bg: #ffffff;
+  --btn-on-dark-text: #1a3a5c;
+
+  /* Button palette — WhatsApp green (opt-in preset) */
+  --btn-whatsapp-bg: #25d366;
+  --btn-whatsapp-text: #ffffff;
 }
 
+/* Expose to Tailwind so `bg-brand-navy`, `text-surface-soft/15`, etc. work. */
 @theme inline {
   --color-brand-navy: var(--brand-navy);
+  --color-brand-navy-dark: var(--brand-navy-dark);
   --color-brand-blue: var(--brand-blue);
+  --color-brand-blue-light: var(--brand-blue-light);
+
+  --color-surface-soft: var(--surface-soft);
+  --color-surface-footer: var(--surface-footer);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-nav-inactive: var(--text-nav-inactive);
 
   --color-background: var(--bg-primary);
   --color-foreground: var(--text-primary);

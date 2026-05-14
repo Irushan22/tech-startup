@@ -6,7 +6,7 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="relative flex items-center bg-[#f8fafc] min-h-[calc(100vh-88px)] overflow-hidden pt-20 pb-20"
+      className="relative flex items-center bg-surface-soft min-h-[calc(100vh-88px)] overflow-hidden pt-20 pb-20"
       style={{
         fontFamily: "var(--font-raleway), sans-serif",
       }}
@@ -16,7 +16,7 @@ export default function AboutSection() {
         className="pointer-events-none absolute inset-0 opacity-[0.02]"
         style={{
           backgroundImage:
-            "linear-gradient(#1a3a5c 1px, transparent 1px), linear-gradient(90deg, #1a3a5c 1px, transparent 1px)",
+            "linear-gradient(var(--brand-navy) 1px, transparent 1px), linear-gradient(90deg, var(--brand-navy) 1px, transparent 1px)",
           backgroundSize: "40px 40px",
         }}
       />
@@ -35,12 +35,12 @@ export default function AboutSection() {
                     clipPath: "polygon(4px 0, 100% 0, calc(100% - 4px) 100%, 0 100%)",
                   }}
                 >
-                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="#1a3a5c" strokeWidth={2.5}>
+                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="var(--brand-navy)" strokeWidth={2.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-bold text-lg mb-2" style={{ color: "#0f1f2e", fontFamily: "var(--font-montserrat), sans-serif" }}>{feature.title}</h3>
+                  <h3 className="font-bold text-lg mb-2" style={{ color: "var(--brand-navy-dark)", fontFamily: "var(--font-montserrat), sans-serif" }}>{feature.title}</h3>
                   <p className="text-sm text-gray-600 leading-relaxed font-medium">{feature.desc}</p>
                 </div>
               </div>
@@ -53,8 +53,8 @@ export default function AboutSection() {
           
           {/* Section Subheading */}
           <div className="mb-3 flex items-center gap-4">
-            <span className="h-0.5 w-12" style={{ background: "#2a5a8c" }} />
-            <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "#2a5a8c" }}>
+            <span className="h-0.5 w-12" style={{ background: "var(--brand-blue)" }} />
+            <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--brand-blue)" }}>
               {about.eyebrow}
             </span>
           </div>
@@ -62,15 +62,15 @@ export default function AboutSection() {
           {/* Headline */}
           <h2
             className="text-3xl font-extrabold leading-tight sm:text-4xl"
-            style={{ color: "#0f1f2e", fontFamily: "var(--font-montserrat), sans-serif" }}
+            style={{ color: "var(--brand-navy-dark)", fontFamily: "var(--font-montserrat), sans-serif" }}
           >
             {about.headlineLine1}<br/><br className="lg:hidden"/>
-            {about.headlineLine2Prefix} <span style={{ color: "#1a3a5c" }}>{about.headlineHighlight}</span>
+            {about.headlineLine2Prefix} <span style={{ color: "var(--brand-navy)" }}>{about.headlineHighlight}</span>
           </h2>
 
           {/* Description */}
           {about.paragraphs.map((p, i) => (
-            <p key={i} className={`text-lg leading-relaxed text-[#4a5e72] ${i === 0 ? "mt-8 mb-6" : "mb-2"}`}>
+            <p key={i} className={`text-lg leading-relaxed text-text-secondary ${i === 0 ? "mt-8 mb-6" : "mb-2"}`}>
               {p}
             </p>
           ))}

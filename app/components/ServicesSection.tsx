@@ -31,31 +31,31 @@ export default function ServicesSection() {
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-14">
           <div>
             <div className="mb-3 flex items-center gap-4">
-              <span className="h-0.5 w-12" style={{ background: "#2a5a8c" }} />
-              <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "#2a5a8c" }}>
+              <span className="h-0.5 w-12" style={{ background: "var(--brand-blue)" }} />
+              <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--brand-blue)" }}>
                 {servicesEyebrow}
               </span>
             </div>
 
             <h2
               className="text-3xl font-extrabold leading-tight sm:text-4xl"
-              style={{ color: "#0f1f2e", fontFamily: "var(--font-montserrat), sans-serif" }}
+              style={{ color: "var(--brand-navy-dark)", fontFamily: "var(--font-montserrat), sans-serif" }}
             >
-              {servicesHeadlineLine1}<span style={{ color: "#1a3a5c" }}>{servicesHeadlineHighlight}</span>
+              {servicesHeadlineLine1}<span style={{ color: "var(--brand-navy)" }}>{servicesHeadlineHighlight}</span>
             </h2>
           </div>
 
           {/* Custom Navigation Arrows */}
           <div className="flex items-center gap-3 mt-6 md:mt-0">
             <button
-              className="swiper-btn-prev flex h-12 w-12 items-center justify-center border border-[#1a3a5c]/20 text-[#1a3a5c] hover:bg-[#1a3a5c] hover:text-white transition-all duration-300 cursor-pointer"
+              className="swiper-btn-prev flex h-12 w-12 items-center justify-center border border-brand-navy/20 text-brand-navy hover:bg-brand-navy hover:text-white transition-all duration-300 cursor-pointer"
             >
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
               </svg>
             </button>
             <button
-              className="swiper-btn-next flex h-12 w-12 items-center justify-center border border-[#1a3a5c]/20 text-[#1a3a5c] hover:bg-[#1a3a5c] hover:text-white transition-all duration-300 cursor-pointer"
+              className="swiper-btn-next flex h-12 w-12 items-center justify-center border border-brand-navy/20 text-brand-navy hover:bg-brand-navy hover:text-white transition-all duration-300 cursor-pointer"
             >
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -94,17 +94,17 @@ export default function ServicesSection() {
                 onClick={() => setSelectedService(service)}
                 className="group relative flex flex-col justify-between h-[320px] p-8 lg:p-10 cursor-pointer transition-all duration-500 hover:shadow-2xl"
                 style={{
-                  background: "#f8fafc",
+                  background: "var(--surface-soft)",
                   borderRadius: "2px",
                 }}
               >
                 {/* Top accent – scales in on hover */}
-                <div className="absolute top-0 left-0 right-0 h-[3px] bg-[#1a3a5c] scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100" />
+                <div className="absolute top-0 left-0 right-0 h-[3px] bg-brand-navy scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100" />
 
                 {/* Number watermark */}
                 <span
                   className="absolute top-4 right-6 text-6xl font-extrabold pointer-events-none select-none opacity-[0.04] transition-opacity duration-300 group-hover:opacity-[0.08]"
-                  style={{ fontFamily: "var(--font-montserrat), sans-serif", color: "#1a3a5c" }}
+                  style={{ fontFamily: "var(--font-montserrat), sans-serif", color: "var(--brand-navy)" }}
                 >
                   {service.num}
                 </span>
@@ -112,28 +112,28 @@ export default function ServicesSection() {
                 {/* Icon + Content */}
                 <div>
                   <div 
-                    className="mb-6 flex h-14 w-14 items-center justify-center rounded-sm transition-all duration-300 group-hover:bg-[#1a3a5c] group-hover:shadow-lg"
+                    className="mb-6 flex h-14 w-14 items-center justify-center rounded-sm transition-all duration-300 group-hover:bg-brand-navy group-hover:shadow-lg"
                     style={{ background: "rgba(26,58,92,0.06)" }}
                   >
-                    <div className="text-[#1a3a5c] group-hover:text-white transition-colors duration-300">
+                    <div className="text-brand-navy group-hover:text-white transition-colors duration-300">
                       {service.icon}
                     </div>
                   </div>
 
                   <h3 
                     className="mb-3 text-xl font-bold leading-snug"
-                    style={{ color: "#0f1f2e", fontFamily: "var(--font-montserrat), sans-serif" }}
+                    style={{ color: "var(--brand-navy-dark)", fontFamily: "var(--font-montserrat), sans-serif" }}
                   >
                     {service.title}
                   </h3>
 
-                  <p className="text-[#4a5e72] leading-relaxed text-sm">
+                  <p className="text-text-secondary leading-relaxed text-sm">
                     {service.desc}
                   </p>
                 </div>
 
                 {/* Learn More */}
-                <div className="flex items-center gap-2 text-[#1a3a5c] mt-4">
+                <div className="flex items-center gap-2 text-brand-navy mt-4">
                   <span className="text-xs font-bold uppercase tracking-wider">Explore</span>
                   <svg className="h-3.5 w-3.5 transform transition-transform duration-300 group-hover:translate-x-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -159,10 +159,10 @@ export default function ServicesSection() {
             style={{ animation: "fade-in-up 0.3s ease-out forwards" }}
           >
             {/* Modal Header */}
-            <div className="flex items-center justify-between bg-white px-8 py-6 border-b border-[var(--border-subtle)]">
+            <div className="flex items-center justify-between bg-white px-8 py-6 border-b border-(--border-subtle)">
               <div className="flex items-center gap-4">
                 <div 
-                    className="flex h-12 w-12 items-center justify-center rounded-sm bg-[var(--brand-navy)] text-white shadow-lg"
+                    className="flex h-12 w-12 items-center justify-center rounded-sm bg-brand-navy text-white shadow-lg"
                 >
                   {selectedService.icon}
                 </div>
@@ -172,7 +172,7 @@ export default function ServicesSection() {
               </div>
               <button 
                 onClick={() => setSelectedService(null)}
-                className="text-[var(--text-muted)] hover:text-[var(--brand-navy)] transition-colors p-2"
+                className="text-text-muted hover:text-brand-navy transition-colors p-2"
               >
                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -182,16 +182,16 @@ export default function ServicesSection() {
 
             {/* Modal Body */}
             <div className="p-8">
-              <p className="text-lg text-[var(--text-secondary)] leading-relaxed mb-8">
+              <p className="text-lg text-text-secondary leading-relaxed mb-8">
                 {selectedService.desc}
               </p>
 
-              <h4 className="text-sm font-bold uppercase tracking-widest text-[var(--brand-blue)] mb-4">Core Capabilities</h4>
+              <h4 className="text-sm font-bold uppercase tracking-widest text-brand-blue mb-4">Core Capabilities</h4>
               
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {selectedService.details.map((detail, idx) => (
-                  <li key={idx} className="flex items-start gap-3 text-sm font-medium text-[var(--text-primary)]">
-                    <svg className="h-5 w-5 shrink-0 text-[var(--brand-navy)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <li key={idx} className="flex items-start gap-3 text-sm font-medium text-text-primary">
+                    <svg className="h-5 w-5 shrink-0 text-brand-navy" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                     {detail}
@@ -204,9 +204,10 @@ export default function ServicesSection() {
                 <a
                   href="#contact"
                   onClick={() => setSelectedService(null)}
-                  className="inline-flex items-center justify-center gap-2 px-8 py-3 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-3 text-sm font-bold transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
                   style={{
-                    background: "var(--brand-navy)",
+                    background: "var(--btn-primary-bg)",
+                    color: "var(--btn-primary-text)",
                   }}
                 >
                   Request Consultation
